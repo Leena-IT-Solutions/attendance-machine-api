@@ -13,7 +13,7 @@ Route::get('/privacy-policy', function () {
 
 
 Route::get('/download-apk', function () {
-    $path = public_path('app-release.apk');
+    $path = public_path('attendance-machine.apk');
     if (!file_exists($path)) {
         abort(404, 'APK file not found. Please build the app first.');
     }
