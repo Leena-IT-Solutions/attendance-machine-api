@@ -60,6 +60,19 @@ class SubscriptionVerificationService
      */
     protected function verifyIos(string $productId, string $receiptData): array
     {
+        // Support mock receipts for local testing or App Review fallback simulation
+        if (str_starts_with($receiptData, 'mock_') || $receiptData === 'mock_verification_token') {
+            Log::info("Mock iOS receipt detected. Auto-approving for testing.");
+            $limits = $this->mapProductToLimits($productId);
+            return [
+                'status' => true,
+                'expires_at' => now()->addMonth(),
+                'original_transaction_id' => 'mock_ios_tx_' . time(),
+                'tier' => $limits['tier'],
+                'max_employees' => $limits['max_employees'],
+            ];
+        }
+
         $prodUrl = 'https://buy.itunes.apple.com/verifyReceipt';
         $sandboxUrl = 'https://sandbox.itunes.apple.com/verifyReceipt';
 
