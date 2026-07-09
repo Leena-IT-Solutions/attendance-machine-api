@@ -383,10 +383,14 @@
                 <p class="brand-subtitle">Smart attendance tracking</p>
             </div>
 
-            <!-- Auth Card -->
-            <div class="auth-card">
+            @if ($attributes->has('no-card-wrapper'))
                 {{ $slot }}
-            </div>
+            @else
+                <!-- Auth Card -->
+                <div class="auth-card">
+                    {{ $slot }}
+                </div>
+            @endif
         </div>
     </div>
     <script>
