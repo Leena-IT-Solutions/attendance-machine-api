@@ -85,32 +85,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let billingCycle = 'monthly'; // 'monthly' or 'yearly'
 
+    const tiers = [
+        { count: '5', label: 'Up to 5 Staff', monthly: 25, yearly: 250 },
+        { count: '10', label: 'Up to 10 Staff', monthly: 50, yearly: 500 },
+        { count: '20', label: 'Up to 20 Staff', monthly: 100, yearly: 1000 },
+        { count: '50', label: 'Up to 50 Staff', monthly: 250, yearly: 2500 },
+        { count: '100', label: 'Up to 100 Staff', monthly: 500, yearly: 5000 },
+        { count: 'Unlimited', label: 'Unlimited Staff', monthly: 1000, yearly: 10000 }
+    ];
+
     function updateCalculator() {
         if (!employeeSlider) return;
 
-        const count = parseInt(employeeSlider.value);
-        employeeCountVal.textContent = count;
+        const index = parseInt(employeeSlider.value);
+        const currentTier = tiers[index];
 
-        let ratePerEmployee = 5; // Default ₹5 per employee per month
-        let cycleText = 'monthly';
-
-        if (billingCycle === 'yearly') {
-            ratePerEmployee = 4; // 20% discount: ₹4 per employee per month
-            cycleText = 'annually';
-        }
-
-        const totalCost = count * ratePerEmployee;
-        priceCalculated.textContent = `₹${totalCost}`;
+        employeeCountVal.textContent = currentTier.count;
 
         if (billingCycle === 'yearly') {
-            pricingPeriod.innerHTML = '/ month <span style="display:block; font-size:10px; color:#94a3b8; font-weight:bold; margin-top:2px;">Billed ₹' + (totalCost * 12).toLocaleString() + ' annually</span>';
-            pricingDetailsSummary.textContent = `Based on ₹4 per employee per month (Save 20% on Annual plan).`;
-            savingsBadge.textContent = '₹4/employee';
+            priceCalculated.textContent = `₹${currentTier.yearly}`;
+            pricingPeriod.innerHTML = '/ year';
+            pricingDetailsSummary.textContent = `Flat rate for ${currentTier.label.toLowerCase()} loaded with all features.`;
+            savingsBadge.textContent = '2 Months Free';
             savingsBadge.className = 'text-xs font-bold text-violet-600 bg-violet-50 border border-violet-100 px-3 py-1.5 rounded-full';
         } else {
+            priceCalculated.textContent = `₹${currentTier.monthly}`;
             pricingPeriod.innerHTML = '/ month';
-            pricingDetailsSummary.textContent = `Based on ₹5 per employee per month.`;
-            savingsBadge.textContent = '₹5/employee';
+            pricingDetailsSummary.textContent = `Flat rate for ${currentTier.label.toLowerCase()} loaded with all features.`;
+            savingsBadge.textContent = 'Best Value';
             savingsBadge.className = 'text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-full';
         }
     }

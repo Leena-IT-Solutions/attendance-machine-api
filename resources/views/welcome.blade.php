@@ -162,15 +162,25 @@
                             Go to Console
                         </a>
                     @else
-                        <a href="{{ route('register') }}"
-                            class="btn btn-primary px-8 py-4 text-sm font-bold shadow-md shadow-violet-500/20">
-                            Get Started for Free
+                        <a href="https://play.google.com/store/apps/details?id=in.leenaitsolutions.attendance.machine&hl=en_IN"
+                            target="_blank" rel="noopener"
+                            class="download-badge bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300">
+                            <i class="fa-brands fa-google-play text-2xl text-violet-500"></i>
+                            <div>
+                                <span class="text-slate-400">GET IT ON</span>
+                                <strong class="text-white">Google Play</strong>
+                            </div>
+                        </a>
+                        <a href="https://apps.apple.com"
+                            target="_blank" rel="noopener"
+                            class="download-badge bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300">
+                            <i class="fa-brands fa-apple text-2xl text-white"></i>
+                            <div>
+                                <span class="text-slate-400">DOWNLOAD ON THE</span>
+                                <strong class="text-white">App Store</strong>
+                            </div>
                         </a>
                     @endauth
-                    <button id="btn-watch-demo"
-                        class="btn btn-outline border-slate-200 hover:border-slate-300 px-8 py-4 text-sm font-bold text-slate-700 hover:text-slate-900 bg-white/50 backdrop-blur-sm flex items-center gap-2">
-                        <i class="fa-solid fa-circle-play text-violet-600 text-lg"></i> Watch 1-Min Demo
-                    </button>
                 </div>
             </div>
 
@@ -960,20 +970,22 @@
                                 <span class="font-semibold text-sm text-slate-800">Total Employees</span>
                                 <div class="flex items-baseline gap-1">
                                     <span class="text-2xl font-outfit font-black text-violet-600"
-                                        id="employee-count-val">50</span>
+                                        id="employee-count-val">20</span>
                                     <span class="text-slate-400 text-xs font-bold uppercase">Staff</span>
                                 </div>
                             </div>
                             <!-- Range input -->
                             <div class="space-y-1">
-                                <input type="range" id="employee-slider" min="3" max="500" value="50"
+                                <input type="range" id="employee-slider" min="0" max="5" value="2"
                                     class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-violet-600">
                                 <div
                                     class="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                                    <span>3 Staff</span>
+                                    <span>5 Staff</span>
+                                    <span>10</span>
+                                    <span>20</span>
+                                    <span>50</span>
                                     <span>100</span>
-                                    <span>250</span>
-                                    <span>500+</span>
+                                    <span>Unlimited</span>
                                 </div>
                             </div>
                         </div>
@@ -983,18 +995,18 @@
                             <div>
                                 <div class="flex items-baseline">
                                     <span class="text-5xl font-outfit font-black text-slate-900"
-                                        id="price-calculated">₹250</span>
+                                        id="price-calculated">₹100</span>
                                     <span class="text-slate-400 text-sm font-semibold ml-1" id="pricing-period">/
                                         month</span>
                                 </div>
                                 <p class="text-xs text-slate-400 mt-1" id="pricing-details-summary">
-                                    Based on ₹5 per employee per month.
+                                    Flat rate for up to 20 staff loaded with all features.
                                 </p>
                             </div>
                             <span
                                 class="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-full"
                                 id="savings-badge">
-                                ₹5/employee
+                                Best Value
                             </span>
                         </div>
 
@@ -1034,15 +1046,9 @@
                             </div>
                         </div>
                     </div>
-                    @auth
-                        <a href="{{ route('dashboard') }}"
-                            class="btn btn-primary text-center mt-8 w-full py-4 text-sm font-bold shadow-md shadow-violet-500/10">Upgrade
-                            to Premium</a>
-                    @else
-                        <a href="{{ route('register') }}"
-                            class="btn btn-primary text-center mt-8 w-full py-4 text-sm font-bold shadow-md shadow-violet-500/10">Upgrade
-                            to Premium</a>
-                    @endauth
+                    <a href="#download"
+                        class="btn btn-primary text-center mt-8 w-full py-4 text-sm font-bold shadow-md shadow-violet-500/10">Download
+                        Now</a>
                 </div>
             </div>
         </section>
@@ -1062,25 +1068,34 @@
                             Download the app now, set up your first shift template, and onboard your team in minutes.
                         </p>
 
-                        <!-- Badges -->
+                        <!-- Badges & Demo Button -->
                         <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-                            <a href="https://play.google.com/store/apps/details?id=in.leenaitsolutions.attendance.machine"
-                                target="_blank"
-                                class="download-badge play-store-badge bg-white text-slate-900 border border-transparent hover:bg-violet-50 transition-colors">
+                            <a href="https://play.google.com/store/apps/details?id=in.leenaitsolutions.attendance.machine&hl=en_IN"
+                                target="_blank" rel="noopener"
+                                class="download-badge play-store-badge bg-white text-slate-900 border border-transparent hover:bg-violet-50 transition-all duration-300">
                                 <i class="fa-brands fa-google-play text-2xl text-violet-600"></i>
                                 <div>
                                     <span class="text-slate-400">GET IT ON</span>
                                     <strong class="text-slate-900">Google Play</strong>
                                 </div>
                             </a>
-                            <a href="{{ route('download.apk') }}"
-                                class="download-badge apk-badge bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors">
-                                <i class="fa-brands fa-android text-2xl text-emerald-400"></i>
+                            <a href="https://apps.apple.com"
+                                target="_blank" rel="noopener"
+                                class="download-badge app-store-badge bg-white text-slate-900 border border-transparent hover:bg-violet-50 transition-all duration-300">
+                                <i class="fa-brands fa-apple text-2xl text-black"></i>
                                 <div>
-                                    <span class="text-slate-400">Direct Download</span>
-                                    <strong class="text-white">Android APK</strong>
+                                    <span class="text-slate-400">DOWNLOAD ON THE</span>
+                                    <strong class="text-slate-900">App Store</strong>
                                 </div>
                             </a>
+                            <button id="btn-watch-demo"
+                                class="download-badge bg-transparent border border-white/20 hover:border-white/45 text-white hover:bg-white/10 transition-all duration-300 cursor-pointer">
+                                <i class="fa-solid fa-circle-play text-2xl text-violet-400"></i>
+                                <div>
+                                    <span class="text-slate-300">WATCH 1-MIN</span>
+                                    <strong class="text-white">Demo Video</strong>
+                                </div>
+                            </button>
                         </div>
                     </div>
 
@@ -1201,7 +1216,7 @@
     </div>
 
     <!-- Custom App Script -->
-    <script src="{{ asset('landing-assets/js/app.js') }}"></script>
+    <script src="{{ asset('landing-assets/js/app.js') }}?v=2"></script>
 </body>
 
 </html>
