@@ -139,4 +139,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial calculator load
     updateCalculator();
+
+    // ===== FAQ ACCORDION =====
+    window.toggleFaq = (button) => {
+        const faqItem = button.parentElement;
+        const answer = faqItem.querySelector('.faq-answer');
+        const icon = button.querySelector('i');
+
+        if (answer.classList.contains('hidden')) {
+            // Close all other open FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const otherAnswer = item.querySelector('.faq-answer');
+                const otherIcon = item.querySelector('.faq-toggle i');
+                if (otherAnswer && !otherAnswer.classList.contains('hidden')) {
+                    otherAnswer.classList.add('hidden');
+                    if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                    item.classList.remove('ring-1', 'ring-violet-200');
+                }
+            });
+
+            // Open clicked FAQ
+            answer.classList.remove('hidden');
+            icon.style.transform = 'rotate(180deg)';
+            faqItem.classList.add('ring-1', 'ring-violet-200');
+        } else {
+            // Close clicked FAQ
+            answer.classList.add('hidden');
+            icon.style.transform = 'rotate(0deg)';
+            faqItem.classList.remove('ring-1', 'ring-violet-200');
+        }
+    };
 });

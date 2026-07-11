@@ -4,22 +4,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     <!-- ===== SEO Meta Tags ===== -->
-    <title>Attendance Machine | Real-Time GPS Employee Attendance Tracking App</title>
+    <title>Attendance Machine | Face Recognition Employee Attendance & Payroll App for Businesses</title>
     <meta name="description"
-        content="Attendance Machine by Leena IT Solutions. A modern GPS-verified mobile attendance tracking app for offices, schools, factories, and businesses. Real-time check-in, reports, and cloud sync.">
+        content="Attendance Machine — contactless face recognition attendance tracking app with GPS verification, automated salary calculation, LOP deductions & payroll reports. Built for factories, restaurants, hospitals, retail stores, construction sites & businesses of all sizes. Free plan available.">
     <meta name="keywords"
-        content="attendance app, employee tracking, GPS check-in, real-time attendance, shift management, office attendance tracker, Leena IT Solutions, attendance machine">
+        content="attendance app, employee attendance tracking, face recognition attendance system, GPS attendance tracker, payroll management software, salary calculation app, biometric attendance app, shift management, factory attendance system, restaurant staff attendance, hospital employee tracking, retail store attendance, construction worker attendance, LOP calculator, automated payroll, HR software India, contactless attendance, employee tracking app, Leena IT Solutions, attendance machine">
     <meta name="author" content="Leena IT Solutions">
     <meta name="theme-color" content="#7C3AED">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Canonical & Localization -->
+    <link rel="canonical" href="https://attendance.infoleena.com/">
+    <link rel="alternate" hreflang="en-IN" href="https://attendance.infoleena.com/">
+    <link rel="alternate" hreflang="en" href="https://attendance.infoleena.com/">
+    <link rel="alternate" hreflang="x-default" href="https://attendance.infoleena.com/">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('icon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icon.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('icon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Attendance Machine | Real-Time GPS Employee Attendance App">
+    <meta property="og:url" content="https://attendance.infoleena.com/">
+    <meta property="og:site_name" content="Attendance Machine">
+    <meta property="og:title" content="Attendance Machine | Face Recognition Attendance & Payroll App for Businesses">
     <meta property="og:description"
-        content="Streamline employee attendance tracking. GPS location validation, real-time sync, shifts, and reports. Try it free.">
-    <meta property="og:image" content="{{ asset('landing-assets/images/integration_preview.jpeg') }}">
+        content="Turn any phone into a contactless face recognition attendance machine. GPS-verified check-ins, automated salary calculation, LOP deductions & payroll-ready reports. Free plan available for businesses.">
+    <meta property="og:image" content="https://attendance.infoleena.com/landing-assets/images/integration_preview.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Attendance Machine | Face Recognition Attendance & Payroll App">
+    <meta name="twitter:description"
+        content="Contactless face recognition attendance tracker with GPS, shift management, LOP calculation & automated payroll reports. Built for factories, restaurants, hospitals & businesses of all sizes.">
+    <meta name="twitter:image" content="https://attendance.infoleena.com/landing-assets/images/integration_preview.jpeg">
+
+    <!-- ===== Structured Data: Organization ===== -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "name": "Leena IT Solutions",
+        "url": "https://leenaitsolutions.in",
+        "logo": "https://attendance.infoleena.com/icon.png",
+        "contactPoint": {
+            "@@type": "ContactPoint",
+            "email": "leenaitsolutions@gmail.com",
+            "contactType": "customer support"
+        },
+        "sameAs": [
+            "https://play.google.com/store/apps/details?id=in.leenaitsolutions.attendance.machine"
+        ]
+    }
+    </script>
+
+    <!-- ===== Structured Data: SoftwareApplication ===== -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "SoftwareApplication",
+        "name": "Attendance Machine",
+        "operatingSystem": "Android, iOS",
+        "applicationCategory": "BusinessApplication",
+        "description": "Contactless face recognition attendance app with GPS tracking, shift management, automated LOP calculation, and payroll-ready reports for businesses of all sizes — factories, restaurants, hospitals, retail stores, construction sites, and more.",
+        "offers": {
+            "@@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR",
+            "description": "Free plan available for up to 2 employees. Premium plans start at ₹25/month."
+        },
+        "author": {
+            "@@type": "Organization",
+            "name": "Leena IT Solutions",
+            "url": "https://leenaitsolutions.in"
+        },
+        "downloadUrl": "https://play.google.com/store/apps/details?id=in.leenaitsolutions.attendance.machine",
+        "screenshot": "https://attendance.infoleena.com/landing-assets/images/integration_preview.jpeg",
+        "featureList": "Contactless Face Recognition Scanner, GPS-Verified Check-ins, Smart Shift Management, Automated LOP Calculator, Payroll-Ready Reports, Cloud Sync, Developer API & Webhooks"
+    }
+    </script>
+
+    <!-- ===== Structured Data: FAQPage ===== -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@@type": "Question",
+                "name": "How does face recognition attendance work?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Attendance Machine uses advanced AI-powered face recognition to identify employees in under 2 seconds. Admins register each employee's face on any smartphone or tablet camera. During check-in, the app scans the face, matches it against stored 512-bit biometric signatures with 99.4% accuracy, and logs the attendance automatically with GPS coordinates."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Can I track attendance of 100+ employees?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Yes. The Premium plan supports up to 100 employees, and the Unlimited plan handles any team size. Each plan includes face recognition scanning, shift management, LOP calculations, and payroll-ready report exports for all registered employees."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Does the app calculate salary automatically?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Yes. The Attendance Machine app tracks daily check-ins, late arrivals, early exits, and absences. It automatically calculates Loss of Pay (LOP) deductions based on your custom shift rules. These payroll-ready reports can be exported to Excel or PDF and synced with our Cloud Payroll Management software for full salary processing."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Is the attendance data synced to the cloud?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Yes. All attendance records are encrypted and synced to the cloud in real-time. You can access attendance data, run reports, and manage employees from any device with an internet connection. The cloud infrastructure maintains 99.9% uptime."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Can I export attendance reports to Excel?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Absolutely. You can export detailed attendance matrices to both Excel (.xlsx) and PDF formats with a single tap. Reports include employee names, punch times, shift assignments, late marks, absent days, and LOP deduction amounts — ready for payroll processing."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Does it work for multiple shifts like morning and night?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Yes. You can create unlimited custom shift templates — Morning, Night, General, Rotating, or any schedule that fits your business. Each employee can be assigned to a specific shift, and the app tracks attendance and calculates LOP independently per shift."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Is there a free plan for small businesses?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Yes. The Basic Starter plan is completely free and supports up to 2 employees with core features including face recognition scanning, smart employee profiling, and standard shift management. Premium plans with full features start at just ₹25/month."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "How is Loss of Pay (LOP) calculated automatically?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "The app compares each employee's actual punch time against their assigned shift schedule. Late arrivals beyond a configurable threshold trigger proportional LOP deductions (e.g., 0.25 for a quarter-day). Full-day absences result in 1.00 LOP. All calculations happen automatically based on your custom workspace rules."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Can this replace biometric punch machines and fingerprint scanners?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Yes. Attendance Machine eliminates the need for expensive biometric hardware terminals, fingerprint scanners, or RFID card systems. It works on any standard smartphone or tablet with a camera, making it a zero-hardware-cost solution for contactless attendance tracking."
+                }
+            },
+            {
+                "@@type": "Question",
+                "name": "Which industries and business types can use this app?",
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": "Attendance Machine is designed for all industries where tracking employee attendance and calculating salaries is critical — including manufacturing, construction, restaurants, hotels, retail stores, supermarkets, hospitals, clinics, schools, IT companies, logistics, warehousing, security agencies, textile and garment units, automobile workshops, real estate firms, cleaning services, and event management companies."
+                }
+            }
+        ]
+    }
+    </script>
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,8 +243,9 @@
                 <a href="#features" class="hover:text-violet-600 transition-colors">Features</a>
                 <a href="#how-it-works" class="hover:text-violet-600 transition-colors">How It Works</a>
                 <a href="#cloud-payroll" class="hover:text-violet-600 transition-colors">Payroll</a>
+                <a href="#industries" class="hover:text-violet-600 transition-colors">Industries</a>
                 <a href="#pricing" class="hover:text-violet-600 transition-colors">Pricing</a>
-                <a href="#download" class="hover:text-violet-600 transition-colors">Download</a>
+                <a href="#faq" class="hover:text-violet-600 transition-colors">FAQ</a>
             </nav>
 
             <!-- CTA Button -->
@@ -108,10 +272,12 @@
                 onclick="toggleMenu()">How It Works</a>
             <a href="#cloud-payroll" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors"
                 onclick="toggleMenu()">Payroll</a>
+            <a href="#industries" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors"
+                onclick="toggleMenu()">Industries</a>
             <a href="#pricing" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors"
                 onclick="toggleMenu()">Pricing</a>
-            <a href="#download" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors"
-                onclick="toggleMenu()">Download</a>
+            <a href="#faq" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors"
+                onclick="toggleMenu()">FAQ</a>
             
             @auth
                 <a href="{{ route('dashboard') }}" class="btn btn-primary text-center mt-2" onclick="toggleMenu()">Console</a>
@@ -143,11 +309,11 @@
                 </div>
                 <h1
                     class="font-outfit text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
-                    Turn Any Device into a <br>
+                    Face Recognition <br>
                     <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Contactless
-                        Face</span> <br>
-                    Attendance Machine.
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Employee
+                        Attendance</span> & <br>
+                    Payroll App for Businesses.
                 </h1>
                 <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto md:mx-0">
                     Stop chasing paper logs or expensive hardware punch systems. Register staff, scan faces, and
@@ -334,23 +500,39 @@
 
                 <!-- Industries placeholder logos/badges -->
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Target Environments:</span>
-                    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Built for Every Industry:</span>
+                    <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4">
                         <div
                             class="flex items-center gap-2 bg-slate-100/60 border border-slate-200/40 px-4 py-2 rounded-xl text-slate-600 font-semibold text-xs transition-colors hover:bg-slate-100">
-                            <i class="fa-solid fa-store text-violet-600"></i> Built for Retail
+                            <i class="fa-solid fa-industry text-violet-600"></i> Factories
                         </div>
                         <div
                             class="flex items-center gap-2 bg-slate-100/60 border border-slate-200/40 px-4 py-2 rounded-xl text-slate-600 font-semibold text-xs transition-colors hover:bg-slate-100">
-                            <i class="fa-solid fa-rocket text-violet-600"></i> Built for Startups
+                            <i class="fa-solid fa-utensils text-violet-600"></i> Restaurants
                         </div>
                         <div
                             class="flex items-center gap-2 bg-slate-100/60 border border-slate-200/40 px-4 py-2 rounded-xl text-slate-600 font-semibold text-xs transition-colors hover:bg-slate-100">
-                            <i class="fa-solid fa-industry text-violet-600"></i> Built for Factories
+                            <i class="fa-solid fa-hospital text-violet-600"></i> Hospitals
                         </div>
                         <div
                             class="flex items-center gap-2 bg-slate-100/60 border border-slate-200/40 px-4 py-2 rounded-xl text-slate-600 font-semibold text-xs transition-colors hover:bg-slate-100">
-                            <i class="fa-solid fa-building-office text-violet-600"></i> Built for Modern Offices
+                            <i class="fa-solid fa-store text-violet-600"></i> Retail
+                        </div>
+                        <div
+                            class="flex items-center gap-2 bg-slate-100/60 border border-slate-200/40 px-4 py-2 rounded-xl text-slate-600 font-semibold text-xs transition-colors hover:bg-slate-100">
+                            <i class="fa-solid fa-helmet-safety text-violet-600"></i> Construction
+                        </div>
+                        <div
+                            class="flex items-center gap-2 bg-slate-100/60 border border-slate-200/40 px-4 py-2 rounded-xl text-slate-600 font-semibold text-xs transition-colors hover:bg-slate-100">
+                            <i class="fa-solid fa-building-office text-violet-600"></i> Offices
+                        </div>
+                        <div
+                            class="flex items-center gap-2 bg-slate-100/60 border border-slate-200/40 px-4 py-2 rounded-xl text-slate-600 font-semibold text-xs transition-colors hover:bg-slate-100">
+                            <i class="fa-solid fa-truck-fast text-violet-600"></i> Logistics
+                        </div>
+                        <div
+                            class="flex items-center gap-2 bg-slate-100/60 border border-slate-200/40 px-4 py-2 rounded-xl text-slate-600 font-semibold text-xs transition-colors hover:bg-slate-100">
+                            <i class="fa-solid fa-shield-halved text-violet-600"></i> Security
                         </div>
                     </div>
                 </div>
@@ -861,6 +1043,298 @@
             </div>
         </section>
 
+        <!-- ===== INDUSTRIES WE SERVE (SEO SECTION) ===== -->
+        <section id="industries" class="py-20 bg-white border-b border-slate-100 relative overflow-hidden">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[700px] h-[700px] bg-violet-50/40 rounded-full blur-[130px] pointer-events-none">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                    <div
+                        class="inline-flex items-center gap-2 bg-violet-50 border border-violet-100 px-4 py-1.5 rounded-full text-xs font-bold text-violet-700 uppercase tracking-wider">
+                        <i class="fa-solid fa-briefcase"></i> Every Business Type
+                    </div>
+                    <h2
+                        class="font-outfit text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                        Built for Industries Where <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Attendance
+                            & Salary</span> Tracking Matters
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">
+                        From factories with 500+ workers to restaurants managing shift rotations — Attendance Machine
+                        handles the complexity of employee tracking and payroll calculation for every business category.
+                    </p>
+                </div>
+
+                <!-- Industry Cards Grid -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Industry 1: Manufacturing -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center mb-4 group-hover:bg-violet-100 transition-colors">
+                            <i class="fa-solid fa-industry text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Manufacturing & Factories</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Track 50–500+ factory workers across multiple
+                            shifts. Automate daily wage calculations, overtime tracking, and LOP deductions for production
+                            floor employees.</p>
+                    </div>
+
+                    <!-- Industry 2: Construction -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4 group-hover:bg-amber-100 transition-colors">
+                            <i class="fa-solid fa-helmet-safety text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Construction Sites</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">GPS-verified attendance for daily wage
+                            construction workers across multiple job sites. Eliminate buddy punching and calculate
+                            contractor payroll accurately.</p>
+                    </div>
+
+                    <!-- Industry 3: Restaurants & Hotels -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center mb-4 group-hover:bg-rose-100 transition-colors">
+                            <i class="fa-solid fa-utensils text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Restaurants & Hotels</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Manage rotating shifts for kitchen, waitstaff,
+                            and housekeeping teams. Track morning, evening, and night shift attendance with automated salary
+                            reports.</p>
+                    </div>
+
+                    <!-- Industry 4: Retail & Supermarkets -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4 group-hover:bg-indigo-100 transition-colors">
+                            <i class="fa-solid fa-store text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Retail Stores & Supermarkets</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Multi-branch attendance tracking for retail
+                            chains. Monitor sales staff check-ins across locations and automate payroll calculations for
+                            part-time and full-time employees.</p>
+                    </div>
+
+                    <!-- Industry 5: Hospitals & Healthcare -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:bg-emerald-100 transition-colors">
+                            <i class="fa-solid fa-hospital text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Hospitals & Clinics</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Contactless attendance for doctors, nurses, and
+                            hospital staff working 24/7 shifts. Hygienic face scanning replaces shared fingerprint devices
+                            in healthcare settings.</p>
+                    </div>
+
+                    <!-- Industry 6: Schools & Education -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center mb-4 group-hover:bg-sky-100 transition-colors">
+                            <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Schools & Coaching Centers</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Track teacher and staff attendance across
+                            departments. Generate monthly salary reports with leave deductions for education institute
+                            payroll processing.</p>
+                    </div>
+
+                    <!-- Industry 7: Logistics & Warehousing -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center mb-4 group-hover:bg-orange-100 transition-colors">
+                            <i class="fa-solid fa-truck-fast text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Logistics & Warehousing</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">GPS-tracked attendance for delivery drivers,
+                            warehouse workers, and logistics teams spread across multiple locations. Automate overtime and
+                            daily wage payroll.</p>
+                    </div>
+
+                    <!-- Industry 8: Security Agencies -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center mb-4 group-hover:bg-slate-200 transition-colors">
+                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Security Agencies</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Track security guard attendance across
+                            client sites with GPS verification. Manage 12-hour rotational shifts and generate payroll
+                            reports for guard deployment contracts.</p>
+                    </div>
+
+                    <!-- Industry 9: Textile & Garment -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center mb-4 group-hover:bg-pink-100 transition-colors">
+                            <i class="fa-solid fa-shirt text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Textile & Garment Units</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Piece-rate and shift-based attendance for
+                            stitching floors and garment factories. Calculate daily worker salaries with automated LOP and
+                            overtime deductions.</p>
+                    </div>
+
+                    <!-- Industry 10: Automobile & Workshops -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-4 group-hover:bg-cyan-100 transition-colors">
+                            <i class="fa-solid fa-car-side text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Automobile & Workshops</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Track mechanic and service center staff
+                            attendance. Manage workshop shifts and compute accurate salary with late-mark and absence
+                            tracking built in.</p>
+                    </div>
+
+                    <!-- Industry 11: IT & Startups -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center mb-4 group-hover:bg-violet-100 transition-colors">
+                            <i class="fa-solid fa-laptop-code text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">IT Companies & Startups</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Modern contactless check-in for tech teams.
+                            Integrate via API webhooks with your existing HR tools. Automated payroll reports save founders
+                            hours of manual work.</p>
+                    </div>
+
+                    <!-- Industry 12: Real Estate -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center mb-4 group-hover:bg-teal-100 transition-colors">
+                            <i class="fa-solid fa-building text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Real Estate & Property</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Track field agents, maintenance crews, and
+                            property management staff across sites. GPS-verified attendance ensures accountability for
+                            distributed teams.</p>
+                    </div>
+
+                    <!-- Industry 13: Cleaning & Facility -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-lime-50 text-lime-600 flex items-center justify-center mb-4 group-hover:bg-lime-100 transition-colors">
+                            <i class="fa-solid fa-broom text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Cleaning & Facility Management</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Monitor housekeeping and janitorial staff
+                            deployed across client locations. Verify on-site presence with GPS and automate monthly salary
+                            processing.</p>
+                    </div>
+
+                    <!-- Industry 14: Event Management -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-fuchsia-50 text-fuchsia-600 flex items-center justify-center mb-4 group-hover:bg-fuchsia-100 transition-colors">
+                            <i class="fa-solid fa-calendar-check text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Event Management</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Track temporary and contract event staff
+                            attendance at venues. Calculate daily wages for caterers, decorators, and event crew with
+                            automated payroll reports.</p>
+                    </div>
+
+                    <!-- Industry 15: Pharmacy & Medical Stores -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-4 group-hover:bg-red-100 transition-colors">
+                            <i class="fa-solid fa-prescription-bottle-medical text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Pharmacies & Medical Stores</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">Track pharmacy staff and store attendant
+                            attendance across retail medical chains. Manage shift rotations and automate salary
+                            calculations for healthcare retail.</p>
+                    </div>
+
+                    <!-- Industry 16: Agriculture & Farming -->
+                    <div
+                        class="bg-white border border-slate-200/60 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200/50 transition-all duration-300 hover:-translate-y-1 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center mb-4 group-hover:bg-green-100 transition-colors">
+                            <i class="fa-solid fa-seedling text-xl"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-slate-900 mb-2">Agriculture & Farming</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">GPS-tracked attendance for farm laborers and
+                            plantation workers. Calculate daily wages for seasonal workers with automated LOP and overtime
+                            tracking.</p>
+                    </div>
+                </div>
+
+                <!-- Bottom CTA -->
+                <div class="text-center mt-12">
+                    <p class="text-slate-500 text-sm mb-4">Don't see your industry? Attendance Machine works for
+                        <strong class="text-slate-800">any business with 5+ employees</strong> that needs attendance
+                        tracking and salary calculation.
+                    </p>
+                    <a href="#download" class="btn btn-primary px-8 py-4 text-sm font-bold shadow-md shadow-violet-500/20">
+                        <i class="fa-solid fa-download mr-2"></i> Get Started Free
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW BUSINESSES SAVE TIME (SOCIAL PROOF) ===== -->
+        <section class="bg-gradient-to-r from-violet-600 to-indigo-600 py-16">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-10">
+                    <h2 class="font-outfit text-2xl sm:text-3xl font-extrabold text-white tracking-tight">How Businesses
+                        Save Time with Attendance Machine</h2>
+                    <p class="text-violet-100 text-sm mt-2 max-w-xl mx-auto">Real results from organizations that
+                        switched from manual registers and expensive biometric hardware.</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center">
+                        <h3 class="font-outfit text-3xl font-black text-white">3+ hrs</h3>
+                        <p class="text-violet-100 text-xs font-semibold uppercase tracking-wider mt-1">Saved per week on
+                            payroll work</p>
+                        <p class="text-violet-200 text-[11px] mt-2">Factory owners eliminate manual spreadsheet
+                            corrections entirely.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center">
+                        <h3 class="font-outfit text-3xl font-black text-white">Zero</h3>
+                        <p class="text-violet-100 text-xs font-semibold uppercase tracking-wider mt-1">Salary calculation
+                            errors</p>
+                        <p class="text-violet-200 text-[11px] mt-2">Automated LOP deductions replace error-prone manual
+                            calculations.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center">
+                        <h3 class="font-outfit text-3xl font-black text-white">₹0</h3>
+                        <p class="text-violet-100 text-xs font-semibold uppercase tracking-wider mt-1">Hardware cost
+                            required</p>
+                        <p class="text-violet-200 text-[11px] mt-2">Restaurants and shops use existing phones instead of
+                            expensive punch machines.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center">
+                        <h3 class="font-outfit text-3xl font-black text-white">60 sec</h3>
+                        <p class="text-violet-100 text-xs font-semibold uppercase tracking-wider mt-1">To generate payroll
+                            report</p>
+                        <p class="text-violet-200 text-[11px] mt-2">Export clean Excel or PDF salary matrices with one
+                            tap — ready for your accountant.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== PRICING SECTION ===== -->
         <section id="pricing" class="max-w-7xl mx-auto px-6 py-20 relative">
             <div
@@ -1053,6 +1527,188 @@
             </div>
         </section>
 
+        <!-- ===== FAQ SECTION ===== -->
+        <section id="faq" class="py-20 bg-white border-y border-slate-100 relative">
+            <div
+                class="absolute bottom-0 right-0 -z-10 w-[500px] h-[500px] bg-indigo-50/30 rounded-full blur-[120px] pointer-events-none">
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center space-y-4 mb-14">
+                    <div
+                        class="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-700 uppercase tracking-wider">
+                        <i class="fa-solid fa-circle-question"></i> Common Questions
+                    </div>
+                    <h2 class="font-outfit text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Frequently Asked <span class="text-violet-600">Questions</span>
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
+                        Everything business owners ask before switching to contactless face recognition attendance and
+                        automated payroll.
+                    </p>
+                </div>
+
+                <!-- FAQ Accordion -->
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">How does face recognition attendance work?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Attendance Machine uses advanced AI-powered face recognition to identify employees in under 2
+                            seconds. Admins register each employee's face on any smartphone or tablet camera. During
+                            check-in, the app scans the face, matches it against stored 512-bit biometric signatures with
+                            99.4% accuracy, and logs the attendance automatically with GPS coordinates.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">Can I track attendance of 100+ employees?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Yes. The Premium plan supports up to 100 employees, and the Unlimited plan handles any team
+                            size. Each plan includes face recognition scanning, shift management, LOP calculations, and
+                            payroll-ready report exports for all registered employees.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">Does the app calculate salary automatically?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Yes. The Attendance Machine app tracks daily check-ins, late arrivals, early exits, and
+                            absences. It automatically calculates Loss of Pay (LOP) deductions based on your custom shift
+                            rules. These payroll-ready reports can be exported to Excel or PDF and synced with our Cloud
+                            Payroll Management software for full salary processing.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">Is the attendance data synced to the cloud?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Yes. All attendance records are encrypted and synced to the cloud in real-time. You can access
+                            attendance data, run reports, and manage employees from any device with an internet connection.
+                            The cloud infrastructure maintains 99.9% uptime.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">Can I export attendance reports to Excel?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Absolutely. You can export detailed attendance matrices to both Excel (.xlsx) and PDF formats
+                            with a single tap. Reports include employee names, punch times, shift assignments, late marks,
+                            absent days, and LOP deduction amounts — ready for payroll processing.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">Does it work for multiple shifts like morning and night?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Yes. You can create unlimited custom shift templates — Morning, Night, General, Rotating, or
+                            any schedule that fits your business. Each employee can be assigned to a specific shift, and the
+                            app tracks attendance and calculates LOP independently per shift.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 7 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">Is there a free plan for small businesses?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Yes. The Basic Starter plan is completely free and supports up to 2 employees with core
+                            features including face recognition scanning, smart employee profiling, and standard shift
+                            management. Premium plans with full features start at just ₹25/month.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 8 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">How is Loss of Pay (LOP) calculated automatically?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            The app compares each employee's actual punch time against their assigned shift schedule. Late
+                            arrivals beyond a configurable threshold trigger proportional LOP deductions (e.g., 0.25 for a
+                            quarter-day). Full-day absences result in 1.00 LOP. All calculations happen automatically
+                            based on your custom workspace rules.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 9 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">Can this replace biometric punch machines and fingerprint scanners?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Yes. Attendance Machine eliminates the need for expensive biometric hardware terminals,
+                            fingerprint scanners, or RFID card systems. It works on any standard smartphone or tablet with
+                            a camera, making it a zero-hardware-cost solution for contactless attendance tracking.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 10 -->
+                    <div class="faq-item bg-slate-50 border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left cursor-pointer hover:bg-slate-100/50 transition-colors"
+                            onclick="toggleFaq(this)">
+                            <span class="font-outfit font-bold text-slate-900 text-sm sm:text-base pr-4">Which industries and business types can use this app?</span>
+                            <i class="fa-solid fa-chevron-down text-violet-600 text-sm transition-transform duration-300 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed">
+                            Attendance Machine is designed for all industries where tracking employee attendance and
+                            calculating salaries is critical — including manufacturing, construction, restaurants, hotels,
+                            retail stores, supermarkets, hospitals, clinics, schools, IT companies, logistics, warehousing,
+                            security agencies, textile and garment units, automobile workshops, real estate firms, cleaning
+                            services, and event management companies.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== DOWNLOAD AREA SECTION ===== -->
         <section id="download" class="max-w-7xl mx-auto px-6 py-12 md:py-20 relative">
             <div
@@ -1151,7 +1807,10 @@
                 <div class="flex flex-col gap-2">
                     <a href="#features" class="hover:text-violet-600 transition-colors">Key Features</a>
                     <a href="#how-it-works" class="hover:text-violet-600 transition-colors">How It Works</a>
+                    <a href="#industries" class="hover:text-violet-600 transition-colors">Industries We Serve</a>
+                    <a href="#cloud-payroll" class="hover:text-violet-600 transition-colors">Cloud Payroll Software</a>
                     <a href="#pricing" class="hover:text-violet-600 transition-colors">Calculator & Pricing</a>
+                    <a href="#faq" class="hover:text-violet-600 transition-colors">FAQ</a>
                     <a href="https://play.google.com/store/apps/details?id=in.leenaitsolutions.attendance.machine"
                         target="_blank" class="hover:text-violet-600 transition-colors">Google Play Store</a>
                 </div>
@@ -1216,7 +1875,7 @@
     </div>
 
     <!-- Custom App Script -->
-    <script src="{{ asset('landing-assets/js/app.js') }}?v=2"></script>
+    <script src="{{ asset('landing-assets/js/app.js') }}?v=3"></script>
 </body>
 
 </html>

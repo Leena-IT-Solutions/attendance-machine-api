@@ -1,2 +1,12 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+Disallow: /profile
+Disallow: /users
+Disallow: /download-apk
+
+# Sitemap
+Sitemap: https://attendance.infoleena.com/sitemap.xml
