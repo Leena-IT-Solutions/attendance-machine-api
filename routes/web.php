@@ -95,6 +95,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         $commands = [
             'git -c safe.directory="' . $basePath . '" reset --hard HEAD 2>&1',
             'git -c safe.directory="' . $basePath . '" pull origin ' . $branch . ' 2>&1',
+            'npm install 2>&1',
+            'npm run build 2>&1',
             'php artisan migrate --force 2>&1',
             'php artisan optimize:clear 2>&1',
         ];
