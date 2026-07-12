@@ -46,6 +46,63 @@ Route::middleware(['auth', 'admin'])->group(function () {
         $deleted = \App\Models\AttendanceRecord::where('scan_date', '<', $cutoffDate)->delete();
         return back()->with('status', "Successfully pruned {$deleted} attendance records older than 95 days (before {$cutoffDate}).");
     })->name('prune.attendance');
+
+    Route::get('/git-info', function () {
+        try {
+            $basePath = base_path();
+            $commitHash = trim(shell_exec('git -c safe.directory="' . $basePath . '" rev-parse --short HEAD') ?? '');
+            $commitMessage = trim(shell_exec('git -c safe.directory="' . $basePath . '" log -1 --pretty=%B') ?? '');
+            $branch = trim(shell_exec('git -c safe.directory="' . $basePath . '" rev-parse --abbrev-ref HEAD') ?? '');
+            $commitDate = trim(shell_exec('git -c safe.directory="' . $basePath . '" log -1 --date=format:"%Y-%m-%d %H:%M:%S" --pretty=%cd') ?? '');
+            $commitRelative = trim(shell_exec('git -c safe.directory="' . $basePath . '" log -1 --date=relative --pretty=%cd') ?? '');
+
+            return response()->json([
+                'success' => true,
+                'branch' => $branch ?: 'Unknown',
+                'commit_hash' => $commitHash ?: 'N/A',
+                'commit_message' => $commitMessage ? strtok($commitMessage, "\n") : 'Git not initialized or not accessible',
+                'commit_date' => $commitDate ?: 'N/A',
+                'commit_relative' => $commitRelative ?: 'N/A',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    })->name('git.info');
+
+    Route::post('/git-update', function () {
+        $basePath = base_path();
+        $branch = trim(shell_exec('git -c safe.directory="' . $basePath . '" rev-parse --abbrev-ref HEAD') ?? 'main');
+        
+        $commands = [
+            'git -c safe.directory="' . $basePath . '" reset --hard HEAD 2>&1',
+            'git -c safe.directory="' . $basePath . '" pull origin ' . $branch . ' 2>&1',
+            'php artisan migrate --force 2>&1',
+            'php artisan optimize:clear 2>&1',
+        ];
+
+        $output = ["Starting update process on branch '{$branch}'...\n"];
+        $success = true;
+
+        foreach ($commands as $command) {
+            $output[] = "$ " . $command;
+            $cmdOutput = [];
+            $status = null;
+            exec("cd " . $basePath . " && " . $command, $cmdOutput, $status);
+            $output[] = implode("\n", $cmdOutput);
+            $output[] = "Exit Code: " . $status . "\n";
+            if ($status !== 0) {
+                $success = false;
+            }
+        }
+
+        return response()->json([
+            'success' => $success,
+            'output' => implode("\n", $output),
+        ]);
+    })->name('git.update');
 });
 
 require __DIR__.'/auth.php';

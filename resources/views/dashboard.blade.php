@@ -95,7 +95,154 @@
                 <canvas id="userGrowthChart"></canvas>
             </div>
         </div>
+
+        <!-- Git Repository Deployment Card -->
+        <div x-data="gitUpdater()" x-init="init()" class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm relative overflow-hidden transition-all duration-500">
+            <div class="flex items-center gap-3 pb-6 mb-8 border-b border-slate-100">
+                <div class="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-500">
+                    <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                </div>
+                <h2 class="text-xl font-black text-slate-900 tracking-tight">System Actions & Git Updates</h2>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-8">
+                <div class="max-w-xl">
+                    <span class="text-sm font-bold text-slate-800 uppercase tracking-wider">Git Repository Deployment</span>
+                    <p class="text-slate-400 text-xs mt-2 leading-relaxed font-medium">
+                        Pull the latest updates from the remote GitHub branch, automatically execute database migrations, and clear cache bundles to deploy changes.
+                    </p>
+                </div>
+                <div class="text-[11px] font-bold font-mono bg-slate-50 border border-slate-100 rounded-2xl p-6 flex flex-col gap-3 min-w-[280px] md:min-w-[360px] shadow-inner text-slate-500">
+                    <div class="flex items-center">
+                        <span class="text-[9px] uppercase font-black text-slate-400 w-28 tracking-widest">Current Branch:</span>
+                        <span class="text-indigo-600 truncate" x-text="gitInfo.branch + ' @ ' + gitInfo.commit_hash">Loading...</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[9px] uppercase font-black text-slate-400 w-28 tracking-widest">Latest Commit:</span>
+                        <span class="text-slate-700 truncate" x-text="'&quot;' + gitInfo.commit_message + '&quot;'">Loading...</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[9px] uppercase font-black text-slate-400 w-28 tracking-widest">Timestamp:</span>
+                        <span class="text-emerald-600 truncate" x-text="gitInfo.commit_date + ' (' + gitInfo.commit_relative + ')'">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <template x-if="successMessage">
+                <div class="bg-emerald-50 border border-emerald-100 text-emerald-800 px-6 py-4 rounded-2xl text-xs font-bold uppercase tracking-wider mb-6 flex items-center gap-3 shadow-sm">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
+                    <span x-text="successMessage"></span>
+                </div>
+            </template>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <button 
+                        @click="updateSite()" 
+                        :disabled="isUpdating"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-bold text-[10px] uppercase tracking-wider rounded-xl shadow transition duration-150 ease-in-out cursor-pointer"
+                    >
+                        <i x-show="!isUpdating" data-lucide="git-pull-request" class="w-4 h-4"></i>
+                        <!-- Loading spinner -->
+                        <svg x-show="isUpdating" class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" style="display: none;">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span x-text="isUpdating ? 'Updating Site...' : 'Update from GitHub'"></span>
+                    </button>
+                </div>
+
+                <template x-if="updateOutput">
+                    <div class="mt-4">
+                        <label class="block font-black text-[10px] text-slate-400 uppercase tracking-widest mb-3">Console Log Output:</label>
+                        <pre class="bg-slate-900 border border-slate-800 text-emerald-400 p-6 rounded-2xl font-mono text-[11px] overflow-x-auto max-h-[300px] overflow-y-auto leading-relaxed shadow-inner" x-text="updateOutput"></pre>
+                    </div>
+                </template>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function gitUpdater() {
+            return {
+                gitInfo: {
+                    branch: '...',
+                    commit_hash: '...',
+                    commit_message: '...',
+                    commit_date: '...',
+                    commit_relative: '...'
+                },
+                isUpdating: false,
+                updateOutput: '',
+                successMessage: '',
+                
+                init() {
+                    this.fetchInfo();
+                },
+                
+                fetchInfo() {
+                    fetch('{{ route('git.info') }}', {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            this.gitInfo = data;
+                            this.$nextTick(() => {
+                                if (typeof lucide !== 'undefined') {
+                                    lucide.createIcons();
+                                }
+                            });
+                        }
+                    })
+                    .catch(err => console.error('Error fetching git info:', err));
+                },
+                
+                updateSite() {
+                    if (!confirm('Are you sure you want to update the site from Git origin? This will hard reset any local changes on the server.')) {
+                        return;
+                    }
+                    this.isUpdating = true;
+                    this.successMessage = '';
+                    this.updateOutput = 'Starting update process...\n\n';
+                    
+                    fetch('{{ route('git.update') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        this.updateOutput = data.output;
+                        if (data.success) {
+                            this.successMessage = 'Update process completed successfully.';
+                            this.fetchInfo();
+                        } else {
+                            this.successMessage = 'Update finished with some errors (check exit codes).';
+                        }
+                        this.$nextTick(() => {
+                            if (typeof lucide !== 'undefined') {
+                                lucide.createIcons();
+                            }
+                        });
+                    })
+                    .catch(err => {
+                        this.updateOutput += '\nError during update request:\n' + err.message;
+                        this.successMessage = 'Update request failed.';
+                    })
+                    .finally(() => {
+                        this.isUpdating = false;
+                    });
+                }
+            }
+        }
+    </script>
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
