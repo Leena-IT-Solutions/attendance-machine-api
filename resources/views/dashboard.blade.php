@@ -125,6 +125,18 @@
                         <span class="text-[9px] uppercase font-black text-slate-400 w-28 tracking-widest">Timestamp:</span>
                         <span class="text-emerald-600 truncate" x-text="gitInfo.commit_date + ' (' + gitInfo.commit_relative + ')'">Loading...</span>
                     </div>
+                    <template x-if="gitInfo.diagnostics">
+                        <div class="mt-2 pt-2 border-t border-slate-200/60 flex flex-col gap-1.5 text-[10px]">
+                            <div class="flex justify-between">
+                                <span class="text-[9px] uppercase font-black text-slate-400 tracking-wider">PHP User:</span>
+                                <span class="text-slate-600 font-bold" x-text="gitInfo.diagnostics.php_user"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-[9px] uppercase font-black text-slate-400 tracking-wider">.git Readable:</span>
+                                <span :class="gitInfo.diagnostics.git_dir_readable ? 'text-emerald-600' : 'text-red-500'" x-text="gitInfo.diagnostics.git_dir_readable ? 'YES' : 'NO'"></span>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </div>
 

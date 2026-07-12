@@ -50,19 +50,31 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/git-info', function () {
         try {
             $basePath = base_path();
+            $currentUser = trim(shell_exec('whoami') ?? 'unknown');
+            $gitDir = $basePath . '/.git';
+            $gitExists = file_exists($gitDir);
+            $gitReadable = $gitExists ? is_readable($gitDir) : false;
+
             $commitHash = trim(shell_exec('git -c safe.directory="' . $basePath . '" rev-parse --short HEAD') ?? '');
             $commitMessage = trim(shell_exec('git -c safe.directory="' . $basePath . '" log -1 --pretty=%B') ?? '');
             $branch = trim(shell_exec('git -c safe.directory="' . $basePath . '" rev-parse --abbrev-ref HEAD') ?? '');
             $commitDate = trim(shell_exec('git -c safe.directory="' . $basePath . '" log -1 --date=format:"%Y-%m-%d %H:%M:%S" --pretty=%cd') ?? '');
             $commitRelative = trim(shell_exec('git -c safe.directory="' . $basePath . '" log -1 --date=relative --pretty=%cd') ?? '');
+            $remotes = trim(shell_exec('git -c safe.directory="' . $basePath . '" remote -v') ?? 'None');
 
             return response()->json([
                 'success' => true,
-                'branch' => $branch ?: 'Unknown',
+                'branch' => ($branch && $branch !== 'HEAD') ? $branch : 'main',
                 'commit_hash' => $commitHash ?: 'N/A',
                 'commit_message' => $commitMessage ? strtok($commitMessage, "\n") : 'Git not initialized or not accessible',
                 'commit_date' => $commitDate ?: 'N/A',
                 'commit_relative' => $commitRelative ?: 'N/A',
+                'diagnostics' => [
+                    'php_user' => $currentUser,
+                    'git_dir_exists' => $gitExists,
+                    'git_dir_readable' => $gitReadable,
+                    'remotes' => $remotes
+                ]
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -74,7 +86,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::post('/git-update', function () {
         $basePath = base_path();
+        
         $branch = trim(shell_exec('git -c safe.directory="' . $basePath . '" rev-parse --abbrev-ref HEAD') ?? 'main');
+        if ($branch === 'HEAD' || empty($branch) || $branch === 'Unknown') {
+            $branch = 'main';
+        }
         
         $commands = [
             'git -c safe.directory="' . $basePath . '" reset --hard HEAD 2>&1',
