@@ -47,6 +47,25 @@ Route::middleware(['auth', 'admin'])->group(function () {
         return back()->with('status', "Successfully pruned {$deleted} attendance records older than 95 days (before {$cutoffDate}).");
     })->name('prune.attendance');
 
+    Route::get('/employees/{code}/attendance', function ($code) {
+        $records = \App\Models\AttendanceRecord::where('employee_code', $code)
+            ->orderBy('scan_date', 'desc')
+            ->orderBy('scan_time', 'desc')
+            ->get();
+            
+        return response()->json([
+            'success' => true,
+            'records' => $records->map(function ($record) {
+                return [
+                    'scan_date' => \Carbon\Carbon::parse($record->scan_date)->format('M d, Y'),
+                    'scan_time' => \Carbon\Carbon::parse($record->scan_time)->format('h:i A'),
+                    'day_name' => \Carbon\Carbon::parse($record->scan_date)->format('l'),
+                ];
+            })
+        ]);
+    })->name('employees.attendance');
+
+
     Route::get('/git-info', function () {
         try {
             $basePath = base_path();
