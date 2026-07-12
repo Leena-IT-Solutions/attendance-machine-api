@@ -114,6 +114,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
             }
         }
 
+        if (function_exists('opcache_reset')) {
+            opcache_reset();
+            $output[] = "OPcache reset successfully.\n";
+        }
+
         return response()->json([
             'success' => $success,
             'output' => implode("\n", $output),
