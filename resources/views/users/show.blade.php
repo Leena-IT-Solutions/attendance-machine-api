@@ -10,7 +10,7 @@
         </div>
     </x-slot>
 
-    <div class="space-y-8 pb-20">
+    <div x-data="employeeAttendanceModal()" class="space-y-8 pb-20">
         <!-- User Summary Card -->
         <div class="p-6 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="flex items-center space-x-4">
@@ -63,7 +63,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse($employees as $employee)
-                    <div class="p-6 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm flex items-center space-x-5 group hover:border-indigo-100 transition-all transform hover:scale-[1.01]">
+                    <div @click="openModal('{{ addslashes($employee->name) }}', '{{ $employee->code }}')" class="p-6 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm flex items-center space-x-5 group hover:border-indigo-100 transition-all transform hover:scale-[1.01] cursor-pointer">
                         <!-- Photo / Avatar -->
                         <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center overflow-hidden border-2 border-white shadow-sm shrink-0">
                             @if($employee->photo)
@@ -106,5 +106,158 @@
                 @endforelse
             </div>
         </div>
+
+        <!-- Attendance History Modal -->
+        <div x-show="isOpen" 
+             class="fixed inset-0 z-50 overflow-y-auto" 
+             style="display: none;"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0">
+             
+            <!-- Backdrop -->
+            <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" @click="closeModal()"></div>
+
+            <!-- Modal Wrapper -->
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-[3rem] bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl border border-slate-100"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                     x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+                     
+                    <!-- Close button -->
+                    <button @click="closeModal()" class="absolute top-8 right-8 text-slate-400 hover:text-slate-600 transition-colors">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+
+                    <!-- Content -->
+                    <div class="p-10">
+                        <div class="flex items-center space-x-4 mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
+                                <i data-lucide="calendar" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-black text-slate-900 tracking-tight" x-text="employeeName"></h3>
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-0.5" x-text="'CODE: ' + employeeCode"></p>
+                            </div>
+                        </div>
+
+                        <!-- Records list -->
+                        <div class="mt-6">
+                            <!-- Loading state -->
+                            <div x-show="loading" class="py-12 flex flex-col items-center justify-center gap-3">
+                                <svg class="animate-spin h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Fetching records...</span>
+                            </div>
+
+                            <!-- Records display -->
+                            <div x-show="!loading">
+                                <template x-if="records.length > 0">
+                                    <div class="border border-slate-100 rounded-3xl overflow-hidden shadow-inner max-h-[400px] overflow-y-auto custom-scrollbar">
+                                        <table class="w-full text-left border-collapse">
+                                            <thead>
+                                                <tr class="bg-slate-50 border-b border-slate-100">
+                                                    <th class="py-4 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</th>
+                                                    <th class="py-4 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Day</th>
+                                                    <th class="py-4 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Scan Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-slate-50">
+                                                <template x-for="record in records">
+                                                    <tr class="hover:bg-slate-50/50 transition-colors">
+                                                        <td class="py-4 px-6 text-xs font-bold text-slate-700" x-text="record.scan_date"></td>
+                                                        <td class="py-4 px-6 text-xs font-bold text-slate-400" x-text="record.day_name"></td>
+                                                        <td class="py-4 px-6 text-xs font-black text-slate-900 text-right">
+                                                            <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-[10px] font-black">
+                                                                <i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-emerald-600"></i>
+                                                                <span x-text="record.scan_time"></span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </template>
+                                
+                                <template x-if="records.length === 0">
+                                    <div class="py-12 text-center">
+                                        <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i data-lucide="calendar-x" class="w-6 h-6 text-slate-300"></i>
+                                        </div>
+                                        <h4 class="text-slate-900 font-bold text-base mb-1">No Records Found</h4>
+                                        <p class="text-slate-400 text-xs max-w-[240px] mx-auto">This employee has no registered scans or attendance logs in the database.</p>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="mt-8 pt-6 border-t border-slate-100 flex justify-end">
+                            <button @click="closeModal()" class="px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs uppercase tracking-wider rounded-xl transition">
+                                Close Window
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function employeeAttendanceModal() {
+            return {
+                isOpen: false,
+                loading: false,
+                employeeName: '',
+                employeeCode: '',
+                records: [],
+                
+                openModal(name, code) {
+                    this.employeeName = name;
+                    this.employeeCode = code;
+                    this.isOpen = true;
+                    this.loading = true;
+                    this.records = [];
+                    
+                    const url = '{{ route('employees.attendance', ['code' => '__CODE__']) }}'.replace('__CODE__', encodeURIComponent(code));
+                    
+                    fetch(url, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            this.records = data.records;
+                        }
+                    })
+                    .catch(err => console.error('Error fetching attendance records:', err))
+                    .finally(() => {
+                        this.loading = false;
+                        this.$nextTick(() => {
+                            if (typeof lucide !== 'undefined') {
+                                lucide.createIcons();
+                            }
+                        });
+                    });
+                },
+                
+                closeModal() {
+                    this.isOpen = false;
+                }
+            }
+        }
+    </script>
 </x-app-layout>
