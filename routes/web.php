@@ -4,12 +4,147 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $latestPosts = \App\Models\BlogPost::latest()->take(3)->get();
+    return view('welcome', compact('latestPosts'));
+})->name('welcome');
 
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy.policy');
+
+Route::get('/terms-of-service', function () {
+    return view('terms-of-service');
+})->name('terms');
+
+Route::get('/refund-policy', function () {
+    return view('refund-policy');
+})->name('refund');
+
+Route::get('/features', function () {
+    return view('features');
+})->name('features');
+
+Route::get('/industries', function () {
+    return view('industries');
+})->name('industries');
+
+Route::get('/pricing', function () {
+    return view('pricing');
+})->name('pricing');
+
+Route::get('/demo', function () {
+    return view('demo');
+})->name('demo');
+
+Route::get('/reports', function () {
+    return view('reports');
+})->name('reports');
+
+Route::get('/api-integration', function () {
+    return view('api-integration');
+})->name('api.integration');
+
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
+Route::get('/blog', function () {
+    $posts = \App\Models\BlogPost::latest()->get();
+    return view('blog', compact('posts'));
+})->name('blog');
+
+Route::get('/blog/{slug}', function ($slug) {
+    $post = \App\Models\BlogPost::where('slug', $slug)->firstOrFail();
+    return view('blog.detail', compact('post'));
+})->name('blog.detail');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::prefix('features')->group(function () {
+    Route::get('/face-recognition', function () {
+        return view('features.face-recognition');
+    })->name('features.detail.face-recognition');
+
+    Route::get('/employee-management', function () {
+        return view('features.employee-management');
+    })->name('features.detail.employee-management');
+
+    Route::get('/reports', function () {
+        return view('features.reports');
+    })->name('features.detail.reports');
+
+    Route::get('/api', function () {
+        return view('features.api');
+    })->name('features.detail.api');
+
+    Route::get('/payroll', function () {
+        return view('features.payroll');
+    })->name('features.detail.payroll');
+
+    Route::get('/company-matrix', function () {
+        return view('features.company-matrix');
+    })->name('features.detail.company-matrix');
+
+    Route::get('/employee-performance', function () {
+        return view('features.employee-performance');
+    })->name('features.detail.employee-performance');
+
+    Route::get('/pdf-export', function () {
+        return view('features.pdf-export');
+    })->name('features.detail.pdf-export');
+
+    Route::get('/excel-export', function () {
+        return view('features.excel-export');
+    })->name('features.detail.excel-export');
+
+    Route::get('/shift-management', function () {
+        return view('features.shift-management');
+    })->name('features.detail.shift-management');
+});
+
+Route::prefix('industries')->group(function () {
+    Route::get('/schools', function () {
+        return view('industries.schools');
+    })->name('industries.detail.schools');
+
+    Route::get('/hospitals', function () {
+        return view('industries.hospitals');
+    })->name('industries.detail.hospitals');
+
+    Route::get('/factories', function () {
+        return view('industries.factories');
+    })->name('industries.detail.factories');
+
+    Route::get('/manufacturing', function () {
+        return view('industries.manufacturing');
+    })->name('industries.detail.manufacturing');
+
+    Route::get('/hotels', function () {
+        return view('industries.hotels');
+    })->name('industries.detail.hotels');
+
+    Route::get('/offices', function () {
+        return view('industries.offices');
+    })->name('industries.detail.offices');
+
+    Route::get('/warehouses', function () {
+        return view('industries.warehouses');
+    })->name('industries.detail.warehouses');
+
+    Route::get('/construction', function () {
+        return view('industries.construction');
+    })->name('industries.detail.construction');
+
+    Route::get('/retail', function () {
+        return view('industries.retail');
+    })->name('industries.detail.retail');
+
+    Route::get('/transport', function () {
+        return view('industries.transport');
+    })->name('industries.detail.transport');
+});
 
 
 Route::get('/download-apk', function () {
