@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
 @section('title', 'Frequently Asked Questions | Attendance Machine')
-@section('meta_description', 'Have questions about face recognition security, GPS validation radius, LOP deductions, or subscriptions? Find comprehensive answers in our FAQ catalog.')
+@section('meta_description', 'Have questions about face recognition security, LOP deductions, or subscriptions? Find comprehensive answers in our FAQ catalog.')
 
 @section('content')
 <!-- ===== HERO TITLE SECTION ===== -->
@@ -16,7 +16,7 @@
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">And Support Guide Catalog</span>
         </h1>
         <p class="text-slate-500 text-sm max-w-xl mx-auto">
-            Can't find what you are looking for? Learn about biometric security, GPS radius settings, integration steps, and account setups here.
+            Can't find what you are looking for? Learn about biometric security, shift templates, integration steps, and account setups here.
         </p>
     </div>
 </section>
@@ -26,7 +26,7 @@
     <!-- Search Bar -->
     <div class="relative bg-white border border-slate-150 rounded-2xl shadow-sm p-2 flex items-center">
         <i class="fa-solid fa-magnifying-glass text-slate-400 pl-3 text-sm"></i>
-        <input type="text" id="faq-search" oninput="filterFaq()" placeholder="Search questions, keywords (e.g. 'GPS', 'Biometric', 'Salary')..." class="w-full px-3 py-2 text-xs bg-transparent border-0 focus:outline-none text-slate-800">
+        <input type="text" id="faq-search" oninput="filterFaq()" placeholder="Search questions, keywords (e.g. 'Biometric', 'Salary')..." class="w-full px-3 py-2 text-xs bg-transparent border-0 focus:outline-none text-slate-800">
     </div>
 
     <!-- FAQ Accordion Catalog -->
@@ -56,11 +56,11 @@
         <!-- FAQ 3 -->
         <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
             <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>How does GPS and geofence tracking prevent buddy punching?</span>
+                <span>What happens to attendance logs if a device goes offline?</span>
                 <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-200"></i>
             </button>
             <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                When an employee scans their face to check in, the app cross-references their current latitude and longitude against the geofence perimeter configured for that branch. If they are outside the radius, check-in fails, preventing colleagues from booking logs for them.
+                Attendance Machine operates 100% offline. If the device loses internet access, punches are securely logged to the device's internal storage and synced automatically once connection is restored.
             </div>
         </div>
 

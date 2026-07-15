@@ -177,11 +177,7 @@ curl -X GET "https://attendance.leenaitsolutions.in/api/v1/attendance-logs?start
     "scan_time": "08:55:04",
     "scan_date": "2026-07-14",
     "accuracy_score": 0.994,
-    "gps_verification": {
-      "verified": true,
-      "latitude": 28.6139,
-      "longitude": 77.2090
-    }
+    "device_id": "Kiosk-HQ-01"
   }
 }</pre>
         </div>

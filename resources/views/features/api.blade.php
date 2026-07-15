@@ -46,7 +46,7 @@
             <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center text-base"><i class="fa-solid fa-code"></i></div>
             <h3 class="font-outfit font-bold text-slate-800 text-base">Clean JSON Payloads</h3>
             <p class="text-slate-550 text-xs leading-relaxed">
-                Standardized data structures for employee identifiers, timestamp check logs, and geofence GPS markers.
+                Standardized data structures for employee identifiers, timestamp check logs, and verification match metrics.
             </p>
         </div>
     </div>
@@ -100,9 +100,8 @@
       "employee_code": "EMP-401",
       "scan_datetime": "2026-07-14 08:55:04",
       "verification_method": "AI_FACE",
-      "gps_validation": "SUCCESS",
-      "latitude": 28.6139,
-      "longitude": 77.2090
+      "accuracy_match": 0.994,
+      "device_id": "Kiosk-HQ-01"
     }
   ]
 }</pre>

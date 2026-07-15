@@ -168,7 +168,8 @@
                                                 <tr class="bg-slate-50 border-b border-slate-100">
                                                     <th class="py-4 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</th>
                                                     <th class="py-4 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Day</th>
-                                                    <th class="py-4 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Scan Time</th>
+                                                    <th class="py-4 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">In Time</th>
+                                                    <th class="py-4 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Out Time</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="divide-y divide-slate-50">
@@ -176,11 +177,27 @@
                                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                                         <td class="py-4 px-6 text-xs font-bold text-slate-700" x-text="record.scan_date"></td>
                                                         <td class="py-4 px-6 text-xs font-bold text-slate-400" x-text="record.day_name"></td>
-                                                        <td class="py-4 px-6 text-xs font-black text-slate-900 text-right">
-                                                            <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-[10px] font-black">
-                                                                <i data-lucide="clock" class="w-3.5 h-3.5 mr-1 text-emerald-600"></i>
-                                                                <span x-text="record.scan_time"></span>
-                                                            </span>
+                                                        <td class="py-4 px-6 text-xs text-center font-black text-slate-900">
+                                                            <template x-if="record.punches.length > 0">
+                                                                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-[10px] font-black">
+                                                                    <i data-lucide="log-in" class="w-3.5 h-3.5 mr-1 text-emerald-600"></i>
+                                                                    <span x-text="record.punches[0]"></span>
+                                                                </span>
+                                                            </template>
+                                                            <template x-if="record.punches.length === 0">
+                                                                <span class="text-slate-300 font-bold">---</span>
+                                                            </template>
+                                                        </td>
+                                                        <td class="py-4 px-6 text-xs text-center font-black text-slate-900">
+                                                            <template x-if="record.punches.length > 1">
+                                                                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-violet-50 text-violet-750 text-[10px] font-black">
+                                                                    <i data-lucide="log-out" class="w-3.5 h-3.5 mr-1 text-violet-600"></i>
+                                                                    <span x-text="record.punches[1]"></span>
+                                                                </span>
+                                                            </template>
+                                                            <template x-if="record.punches.length <= 1">
+                                                                <span class="text-slate-300 font-bold">---</span>
+                                                            </template>
                                                         </td>
                                                     </tr>
                                                 </template>
@@ -240,7 +257,28 @@
                     .then(res => res.json())
                     .then(data => {
                         if (data.success) {
-                            this.records = data.records;
+                            let grouped = {};
+                            data.records.forEach(record => {
+                                let key = record.scan_date;
+                                if (!grouped[key]) {
+                                    grouped[key] = {
+                                        scan_date: record.scan_date,
+                                        day_name: record.day_name,
+                                        punches: []
+                                    };
+                                }
+                                grouped[key].punches.push(record.scan_time);
+                            });
+                            
+                            Object.keys(grouped).forEach(key => {
+                                grouped[key].punches.sort((a, b) => {
+                                    let timeA = new Date("2000-01-01 " + a);
+                                    let timeB = new Date("2000-01-01 " + b);
+                                    return timeA - timeB;
+                                });
+                            });
+                            
+                            this.records = Object.values(grouped);
                         }
                     })
                     .catch(err => console.error('Error fetching attendance records:', err))

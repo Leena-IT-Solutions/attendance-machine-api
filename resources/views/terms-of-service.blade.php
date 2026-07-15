@@ -15,10 +15,10 @@
         <p>Welcome to Attendance Machine. By accessing or using our cloud platform, mobile applications, or biometric face kiosks, you agree to comply with and be bound by the following terms.</p>
         
         <h2>1. Services Provided</h2>
-        <p>Attendance Machine provides cloud-based attendance logging, employee shift planning, geofenced GPS verification, and payroll calculation tools developed by Leena IT Solutions.</p>
+        <p>Attendance Machine provides cloud-based attendance logging, employee shift planning, and payroll calculation tools developed by Leena IT Solutions.</p>
         
         <h2>2. Data Privacy & Consent</h2>
-        <p>By registering employee face signatures or coordinate logs, you warrant that you have obtained explicit consent from your workforce to process their biometrics and locations for corporate auditing purposes.</p>
+        <p>By registering employee face signatures or attendance logs, you warrant that you have obtained explicit consent from your workforce to process their biometrics for corporate auditing purposes.</p>
         
         <h2>3. Subscription Fees</h2>
         <p>Certain components require active, paid subscription packages. Subscriptions auto-renew unless cancelled at least 24 hours prior to the next billing cycle.</p>

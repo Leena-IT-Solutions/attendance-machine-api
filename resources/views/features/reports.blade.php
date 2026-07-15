@@ -58,7 +58,7 @@
     <div class="md:col-span-6 space-y-6">
         <h2 class="font-outfit text-3xl font-black text-slate-900 leading-tight">Accurate Sheets Formatted for Audits</h2>
         <p class="text-slate-600 text-xs leading-relaxed">
-            Run custom queries by date ranges or department groups. The report documents precise check times, lunch durations, shift classifications, and GPS validation flags.
+            Run custom queries by date ranges or department groups. The report documents precise check times, lunch durations, shift classifications, and matching scores.
         </p>
         <div class="border-l-2 border-violet-500 pl-4 space-y-2">
             <h4 class="font-outfit text-xs font-bold text-slate-800">Department Metrics Summary</h4>

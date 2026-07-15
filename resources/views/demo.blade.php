@@ -30,7 +30,7 @@
             <span class="bg-violet-600/30 text-violet-400 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider w-max">Promo</span>
             <h3 class="font-outfit font-extrabold text-base leading-snug">Demo Video Walkthrough</h3>
             <p class="text-slate-400 text-[11px] leading-relaxed">
-                Watch a 1-minute overview showing contactless face check-ins, GPS perimeters, and LOP calculations.
+                Watch a 1-minute overview showing contactless face check-ins, shift configurations, and LOP calculations.
             </p>
         </div>
         <div class="aspect-video w-full rounded-2xl bg-slate-950 flex flex-col items-center justify-center border border-slate-800/80 relative mt-4 cursor-pointer" onclick="document.getElementById('btn-watch-demo').click()">
@@ -81,7 +81,7 @@
             <span class="bg-amber-50 text-amber-700 text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider w-max">Contact Channels</span>
             <h3 class="font-outfit font-extrabold text-base text-slate-800 leading-snug">Direct Communication</h3>
             <p class="text-slate-500 text-[11px] leading-relaxed">
-                Connect with our implementation team immediately to configure specific shift multipliers or geofence perimeters.
+                Connect with our implementation team immediately to configure specific shift multipliers or overtime logic.
             </p>
         </div>
 
@@ -157,7 +157,7 @@
         
         <div class="space-y-1 relative">
             <h3 class="font-outfit text-xl font-bold">Punch Simulator Sandbox</h3>
-            <p class="text-slate-400 text-xs">Verify AI face matches and GPS geofence checks live.</p>
+            <p class="text-slate-400 text-xs">Verify AI face matching and biometric validation checks live.</p>
         </div>
 
         <!-- Phone Frame Simulator -->
@@ -194,7 +194,7 @@
                     </div>
                     <div class="text-left">
                         <p id="sandbox-status-title" class="text-slate-300 text-[9px] font-extrabold">System Ready</p>
-                        <p id="sandbox-status-coords" class="text-slate-550 text-[7px] font-mono">Location Check Pending</p>
+                        <p id="sandbox-status-coords" class="text-slate-550 text-[7px] font-mono">Biometric Scan Pending</p>
                     </div>
                 </div>
             </div>
@@ -238,7 +238,7 @@
         statusIcon.className = 'w-6 h-6 rounded-full bg-slate-800 text-slate-500 flex items-center justify-center text-[10px]';
         statusIcon.innerHTML = '<i class="fa-solid fa-clock"></i>';
         statusTitle.textContent = 'System Ready';
-        statusCoords.textContent = 'Location Check Pending';
+        statusCoords.textContent = 'Biometric Scan Pending';
     }
 
     function runGoodSimulation() {
@@ -273,8 +273,8 @@
             bar.className = 'bg-emerald-950/40 border border-emerald-900/60 p-2 rounded-xl flex items-center gap-2 transition-all duration-300 opacity-100';
             statusIcon.className = 'w-6 h-6 rounded-full bg-emerald-50 text-white flex items-center justify-center text-[10px]';
             statusIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-            statusTitle.textContent = 'Marked In (Inside HQ)';
-            statusCoords.textContent = '28.6139, 77.2090';
+            statusTitle.textContent = 'Marked In';
+            statusCoords.textContent = 'Confidence: 99.4% Match';
         }, 1200);
     }
 
@@ -310,8 +310,8 @@
             bar.className = 'bg-rose-950/40 border border-rose-900/60 p-2 rounded-xl flex items-center gap-2 transition-all duration-300 opacity-100';
             statusIcon.className = 'w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-[10px]';
             statusIcon.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
-            statusTitle.textContent = 'Error: Outside Geofence';
-            statusCoords.textContent = 'Dist: 4.8 km outside boundary';
+            statusTitle.textContent = 'Error: Face Mismatch';
+            statusCoords.textContent = 'Confidence: 12% (Scan Blocked)';
         }, 1200);
     }
 </script>

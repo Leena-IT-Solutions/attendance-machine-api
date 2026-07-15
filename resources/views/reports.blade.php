@@ -138,11 +138,11 @@
         employee_report: {
             title: "Employee Report Preview",
             desc: "Deep dive profile sheet displaying specific worker punch-in history.",
-            headers: ["Date", "Scan Time", "GPS Verification", "Accuracy Match", "Status"],
+            headers: ["Date", "Scan Time", "Device ID", "Accuracy Match", "Status"],
             rows: [
-                ["Jul 14, 2026", "08:55 AM", "Verified (HQ)", "99.4% Match", "<span class='bg-emerald-50 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase'>Present</span>"],
-                ["Jul 13, 2026", "08:58 AM", "Verified (HQ)", "99.2% Match", "<span class='bg-emerald-50 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase'>Present</span>"],
-                ["Jul 12, 2026", "09:12 AM", "Verified (HQ)", "99.6% Match", "<span class='bg-amber-50 text-amber-700 px-2 py-1 rounded text-[10px] font-bold uppercase'>Late (12m)</span>"]
+                ["Jul 14, 2026", "08:55 AM", "Tablet-HQ-01", "99.4% Match", "<span class='bg-emerald-50 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase'>Present</span>"],
+                ["Jul 13, 2026", "08:58 AM", "Tablet-HQ-01", "99.2% Match", "<span class='bg-emerald-50 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase'>Present</span>"],
+                ["Jul 12, 2026", "09:12 AM", "Tablet-HQ-01", "99.6% Match", "<span class='bg-amber-50 text-amber-700 px-2 py-1 rounded text-[10px] font-bold uppercase'>Late (12m)</span>"]
             ]
         },
         attendance_report: {
@@ -187,12 +187,12 @@
         },
         daily_audit: {
             title: "Daily Audit Preview",
-            desc: "Chronological log of device punch events, facial matching scores, and geofence locations.",
-            headers: ["Timestamp", "Event Trigger", "Device ID", "User/Staff", "GPS Coords", "API Status"],
+            desc: "Chronological log of device punch events, facial matching scores, and sync statuses.",
+            headers: ["Timestamp", "Event Trigger", "Device ID", "User/Staff", "Match Score", "API Status"],
             rows: [
-                ["13:08:24 PM", "Face Punch marked", "Tab-HQ-02", "John Doe", "28.6139, 77.2090", "<span class='text-emerald-600 font-bold'>Sync Success</span>"],
-                ["12:55:12 PM", "Profile enrolled", "Mobile-Admin-01", "Thor Odinson", "-", "<span class='text-slate-400'>Pending Upload</span>"],
-                ["09:35:04 AM", "Face Punch marked", "Tab-HQ-02", "Jane Smith", "28.6139, 77.2090", "<span class='text-emerald-600 font-bold'>Sync Success</span>"]
+                ["13:08:24 PM", "Face Punch marked", "Tab-HQ-02", "John Doe", "99.4% Match", "<span class='text-emerald-600 font-bold'>Sync Success</span>"],
+                ["12:55:12 PM", "Profile enrolled", "Mobile-Admin-01", "Thor Odinson", "98.8% (Enrolled)", "<span class='text-slate-400'>Pending Upload</span>"],
+                ["09:35:04 AM", "Face Punch marked", "Tab-HQ-02", "Jane Smith", "99.2% Match", "<span class='text-emerald-600 font-bold'>Sync Success</span>"]
             ]
         },
         monthly_ledger: {

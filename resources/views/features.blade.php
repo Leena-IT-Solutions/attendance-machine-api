@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
 @section('title', 'Product Features Directory | Attendance Machine')
-@section('meta_description', 'Explore our comprehensive toolkit: face recognition kiosks, geofenced GPS, shift planners, automated LOP payroll integrations, and custom export modules.')
+@section('meta_description', 'Explore our comprehensive toolkit: face recognition kiosks, shift planners, automated LOP payroll integrations, and custom export modules.')
 
 @section('content')
 <!-- ===== HERO TITLE SECTION ===== -->

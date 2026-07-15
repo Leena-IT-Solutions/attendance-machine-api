@@ -16,7 +16,7 @@
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Built to Match Your Operational Roster</span>
         </h1>
         <p class="text-slate-500 text-sm max-w-xl mx-auto">
-            Every workspace has unique challenges. Choose your industry sector below to see how our contactless scanning, GPS boundary verification, and shift planners solve them.
+            Every workspace has unique challenges. Choose your industry sector below to see how our contactless scanning, shift planners, and automated LOP rules solve them.
         </p>
     </div>
 </section>
@@ -153,7 +153,7 @@
                 <div class="space-y-2">
                     <h3 class="font-outfit font-extrabold text-slate-900 text-lg">Warehouses & Logistics</h3>
                     <p class="text-slate-550 text-xs leading-relaxed">
-                        Track packers, loading crews, and driver rosters. Geofence verification limits check-ins to authorized loading docks.
+                        Track packers, loading crews, and driver rosters. Ensure secure checks using tablet kiosk mode at designated zones.
                     </p>
                 </div>
             </div>
@@ -173,7 +173,7 @@
                 <div class="space-y-2">
                     <h3 class="font-outfit font-extrabold text-slate-900 text-lg">Construction Sites</h3>
                     <p class="text-slate-550 text-xs leading-relaxed">
-                        Works 100% offline at remote, unpowered sites. GPS geofences verify daily wage laborers are physically present.
+                        Works 100% offline at remote, unpowered sites. Face biometric signatures ensure daily wage laborers are physically present.
                     </p>
                 </div>
             </div>
@@ -213,7 +213,7 @@
                 <div class="space-y-2">
                     <h3 class="font-outfit font-extrabold text-slate-900 text-lg">Transport & Fleets</h3>
                     <p class="text-slate-550 text-xs leading-relaxed">
-                        Monitor driver check-ins, route timings, and dispatch shifts. Attaches GPS coordinates to verify start locations.
+                        Monitor driver check-ins, route timings, and dispatch shifts. Use mobile biometric scans to verify driver identity.
                     </p>
                 </div>
             </div>

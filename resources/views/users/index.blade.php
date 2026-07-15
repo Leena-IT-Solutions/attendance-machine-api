@@ -1,29 +1,28 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-bold tracking-tight text-slate-900">
-                {{ __('System Users') }}
-            </h2>
-            <a href="{{ route('users.create') }}" class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 active:scale-90 transition-transform">
-                <i data-lucide="plus" class="w-6 h-6"></i>
-            </a>
-        </div>
+        {{ __('System Users') }}
     </x-slot>
 
     <div class="space-y-6 pb-20">
-        <!-- Search Bar -->
-        <form method="GET" action="{{ route('users.index') }}" class="relative group">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
-                <i data-lucide="search" class="w-5 h-5"></i>
-            </div>
-            <input type="text" name="search" value="{{ request('search') }}" placeholder="Search users by name, email, or phone..." 
-                class="w-full pl-12 pr-12 py-4 bg-white border-none rounded-[1.5rem] shadow-sm focus:ring-2 focus:ring-indigo-100 placeholder-slate-300 text-sm transition-all">
-            @if(request('search'))
-                <a href="{{ route('users.index') }}" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-rose-500 transition-colors">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </a>
-            @endif
-        </form>
+        <!-- Search & Add User Row -->
+        <div class="flex flex-col sm:flex-row gap-4">
+            <form method="GET" action="{{ route('users.index') }}" class="relative group flex-1">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </div>
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search users by name, email, or phone..." 
+                    class="w-full pl-12 pr-12 py-4 bg-white border-none rounded-[1.5rem] shadow-sm focus:ring-2 focus:ring-indigo-100 placeholder-slate-300 text-sm transition-all">
+                @if(request('search'))
+                    <a href="{{ route('users.index') }}" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-rose-500 transition-colors">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </a>
+                @endif
+            </form>
+            <a href="{{ route('users.create') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm px-6 py-4 rounded-[1.5rem] shadow-lg shadow-indigo-200 active:scale-95 transition-all flex items-center justify-center gap-2 shrink-0">
+                <i data-lucide="plus" class="w-5 h-5"></i>
+                <span>Add User</span>
+            </a>
+        </div>
 
         @if(session('success'))
             <div class="p-4 mb-4 text-sm text-emerald-700 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center">

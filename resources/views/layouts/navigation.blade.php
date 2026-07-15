@@ -18,6 +18,14 @@
                 <span class="text-[10px] font-bold uppercase tracking-widest {{ request()->routeIs('employees.index*') ? 'text-indigo-600' : 'text-slate-400' }}">{{ __('Employee') }}</span>
             </a>
 
+            <!-- Blog CMS -->
+            <a href="{{ route('blogs.index') }}" class="flex flex-col items-center justify-center flex-1 space-y-1 group">
+                <div class="p-2 rounded-2xl transition-all duration-300 {{ request()->routeIs('blogs.index*') ? 'bg-indigo-50 text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' }}">
+                    <i data-lucide="newspaper" class="w-6 h-6"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-widest {{ request()->routeIs('blogs.index*') ? 'text-indigo-600' : 'text-slate-400' }}">{{ __('Blog CMS') }}</span>
+            </a>
+
             <!-- Settings -->
             <a href="{{ route('profile.edit') }}" class="flex flex-col items-center justify-center flex-1 space-y-1 group">
                 <div class="p-2 rounded-2xl transition-all duration-300 {{ request()->routeIs('profile.edit') ? 'bg-indigo-50 text-indigo-600' : 'text-slate-400 group-hover:text-slate-600' }}">

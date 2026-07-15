@@ -20,7 +20,7 @@
             Payroll App for Businesses.
         </h1>
         <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto md:mx-0">
-            Turn any mobile device into a high-accuracy, contactless face recognition kiosk. Verify location with real-time GPS and automate payroll logs instantly.
+            Turn any mobile device into a high-accuracy, contactless face recognition kiosk. Automate roster logs and payroll outputs instantly.
         </p>
 
         <!-- Primary CTA Buttons -->
@@ -37,7 +37,7 @@
                         <strong class="text-white">Google Play</strong>
                     </div>
                 </a>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener" class="download-badge bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300">
+                <a href="https://apps.apple.com/in/app/attendance-machine/id6773431736" target="_blank" rel="noopener" class="download-badge bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300">
                     <i class="fa-brands fa-apple text-2xl text-white"></i>
                     <div>
                         <span class="text-slate-400">DOWNLOAD ON THE</span>
@@ -107,11 +107,11 @@
         
         <div class="absolute bottom-6 -left-6 floating-badge bg-white shadow-xl rounded-2xl p-4 flex items-center gap-3 border border-slate-100 animate-float-delayed">
             <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
-                <i class="fa-solid fa-location-dot"></i>
+                <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div>
-                <p class="text-xs font-bold text-slate-800">GPS Verified</p>
-                <p class="text-[10px] text-slate-550">Real-time coordinates</p>
+                <p class="text-xs font-bold text-slate-800">Offline Mode</p>
+                <p class="text-[10px] text-slate-550">Stores punches offline</p>
             </div>
         </div>
     </div>
@@ -182,10 +182,10 @@
                 </p>
             </div>
             <div class="bg-emerald-50/10 border border-emerald-100/30 rounded-3xl p-8 space-y-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg"><i class="fa-solid fa-globe"></i></div>
-                <h3 class="font-outfit font-bold text-slate-800 text-base">GPS Location Tagging</h3>
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <h3 class="font-outfit font-bold text-slate-800 text-base">Offline Sync Support</h3>
                 <p class="text-slate-550 text-xs leading-relaxed">
-                    Tag punch records with verified coordinates. Geofencing parameters restrict logins to authorized branches.
+                    No active internet required. The application registers punches locally and syncs automatically once reconnected.
                 </p>
             </div>
             <div class="bg-emerald-50/10 border border-emerald-100/30 rounded-3xl p-8 space-y-4">
@@ -267,9 +267,9 @@
 
         <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
             <div class="space-y-3">
-                <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center"><i class="fa-solid fa-map-location-dot"></i></div>
-                <h4 class="font-outfit font-bold text-slate-800 text-base">GPS Geofencing</h4>
-                <p class="text-slate-500 text-xs leading-relaxed">Locks verify scans to authorized coordinates perimeters.</p>
+                <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <h4 class="font-outfit font-bold text-slate-800 text-base">Offline Mode</h4>
+                <p class="text-slate-550 text-xs leading-relaxed">Punch attendance locally on device internal storage with cloud sync.</p>
             </div>
             <a href="{{ route('features.detail.employee-management') }}" class="text-xs text-violet-600 font-bold mt-4 inline-flex items-center gap-1">Explore <i class="fa-solid fa-chevron-right"></i></a>
         </div>
@@ -327,7 +327,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.15),transparent_70%)] pointer-events-none"></div>
         <div class="space-y-4 max-w-md mx-auto relative z-10">
             <h3 class="font-outfit text-xl sm:text-2xl font-black">Watch Attendance Machine in Action</h3>
-            <p class="text-slate-400 text-xs">See a live presentation explaining our contact-free checks, custom geofences, and LOP payroll outputs in 60 seconds.</p>
+            <p class="text-slate-400 text-xs">See a live presentation explaining our contact-free checks, custom shift planners, and LOP payroll outputs in 60 seconds.</p>
             <div class="pt-4">
                 <button onclick="document.getElementById('btn-watch-demo').click()" class="btn btn-primary text-xs px-8 py-3.5 shadow-lg group-hover:scale-105 transition-transform flex items-center gap-2 mx-auto font-bold">
                     <i class="fa-solid fa-circle-play text-base"></i> Launch Demo Video
@@ -449,7 +449,7 @@
   "data": {
     "employee": "Jane Smith",
     "scan_time": "08:55:04",
-    "gps_verified": true
+    "device_id": "Kiosk-01"
   }
 }</pre>
         </div>
@@ -519,7 +519,7 @@
                     <ul class="space-y-3 text-xs text-slate-550 border-t border-slate-50 pt-4">
                         <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Up to 2 staff profiles</li>
                         <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Standard facial kiosk scan</li>
-                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> GPS verified logs</li>
+                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Offline sync support</li>
                     </ul>
                 </div>
                 <a href="{{ route('login') }}" class="btn btn-outline w-full text-center text-xs py-3 font-bold block">Start Free</a>

@@ -91,7 +91,7 @@
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Up to 2 registered staff</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> AI Contactless Face Check-in</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Standard Shift Profile</li>
-                    <li class="flex items-center gap-2 text-slate-400"><i class="fa-solid fa-xmark"></i> No GPS geofencing verification</li>
+                    <li class="flex items-center gap-2 text-slate-400"><i class="fa-solid fa-xmark"></i> No Custom Reports Export</li>
                     <li class="flex items-center gap-2 text-slate-400"><i class="fa-solid fa-xmark"></i> No Developer API & Webhooks</li>
                 </ul>
             </div>
@@ -114,7 +114,7 @@
                 <ul class="space-y-3 text-xs text-slate-600 pt-6 border-t border-slate-50">
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Up to 100 staff members</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> AI Contactless Face Check-in</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Geofenced GPS boundary check</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Offline mode support</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Custom shifts & Overtime deductions</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Export Excel/PDF sheets</li>
                 </ul>
@@ -136,7 +136,7 @@
                 </div>
                 <ul class="space-y-3 text-xs text-slate-600 pt-6 border-t border-slate-50">
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Unlimited employees and devices</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> All Pro shift & GPS geofencing features</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> All Pro shifts & offline features</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Developer API integrations & Webhooks</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Dedicated customer support manager</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Custom backup & uptime compliance SLA</li>
@@ -180,7 +180,7 @@
                     <td class="p-4 text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
                 </tr>
                 <tr>
-                    <td class="p-4 font-bold text-slate-800">GPS location validation</td>
+                    <td class="p-4 font-bold text-slate-800">Offline Sync Mode</td>
                     <td class="p-4 text-slate-300 text-lg"><i class="fa-solid fa-circle-xmark"></i></td>
                     <td class="p-4 text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
                     <td class="p-4 text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>

@@ -8,8 +8,8 @@
 
     <!-- ===== SEO Meta Tags ===== -->
     <title>@yield('title', 'Attendance Machine | Face Recognition Employee Attendance & Payroll App')</title>
-    <meta name="description" content="@yield('meta_description', 'Attendance Machine — contactless face recognition attendance tracking app with GPS verification, automated salary calculation, LOP deductions & payroll reports.')">
-    <meta name="keywords" content="attendance app, employee attendance tracking, face recognition attendance system, GPS attendance tracker, payroll management software, salary calculation app, biometric attendance app, shift management, factory attendance system, restaurant staff attendance, hospital employee tracking, retail store attendance, construction worker attendance, LOP calculator, automated payroll, HR software India, contactless attendance, employee tracking app, Leena IT Solutions, attendance machine">
+    <meta name="description" content="@yield('meta_description', 'Attendance Machine — contactless face recognition attendance tracking app with automated salary calculation, LOP deductions & payroll reports.')">
+    <meta name="keywords" content="attendance app, employee attendance tracking, face recognition attendance system, payroll management software, salary calculation app, biometric attendance app, shift management, factory attendance system, restaurant staff attendance, hospital employee tracking, retail store attendance, construction worker attendance, LOP calculator, automated payroll, HR software India, contactless attendance, employee tracking app, Leena IT Solutions, attendance machine">
     <meta name="author" content="Leena IT Solutions">
     <meta name="theme-color" content="#7C3AED">
     <meta name="mobile-web-app-capable" content="yes">
@@ -47,6 +47,7 @@
                             805: '#1e293b',
                         },
                         violet: {
+                            650: '#722ce0',
                             850: '#2e1065',
                         },
                         indigo: {
@@ -142,7 +143,7 @@
                     <span class="font-outfit text-xl font-extrabold tracking-tight text-slate-900">Attendance Machine</span>
                 </a>
                 <p class="text-xs text-slate-500 leading-relaxed max-w-sm">
-                    Smarter, contactless facial attendance verification & GPS tracking solution built to streamline payroll and shift management for modern businesses.
+                    Smarter, contactless facial attendance verification solution built to streamline payroll and shift management for modern businesses.
                 </p>
                 <div class="text-xs text-slate-400">
                     Developed with &hearts; by <a href="https://leenaitsolutions.in" target="_blank" class="hover:text-violet-600 transition-colors font-semibold">Leena IT Solutions</a>
