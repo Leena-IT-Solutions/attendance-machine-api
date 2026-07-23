@@ -17,10 +17,6 @@
     <p class="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
         Coordinate complex split shifts and 24/7 rotating schedules for front desk, kitchen, housekeeping, and service departments.
     </p>
-    <div class="flex justify-center gap-4 pt-2">
-        <a href="{{ route('demo') }}" class="btn btn-primary text-xs px-6 py-3.5">Schedule Hospitality Demo</a>
-        <a href="{{ route('contact') }}" class="btn btn-outline text-xs px-6 py-3.5">Contact Sales</a>
-    </div>
 </section>
 
 <!-- ===== BENEFITS SECTION ===== -->
@@ -73,41 +69,15 @@
     </div>
 </section>
 
-<!-- ===== FAQS ACCORDION ===== -->
-<section class="max-w-4xl mx-auto px-6 py-12 space-y-6">
-    <h3 class="font-outfit text-2xl font-black text-center text-slate-900">Hospitality FAQs</h3>
-    
-    <div class="space-y-3">
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Can we configure custom split shift templates?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. Under settings, managers create custom templates (e.g. general split shifts with lunch or afternoon buffers) to monitor hotel worker schedules.
-            </div>
-        </div>
-
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Does the kiosk work if placed at multiple branch locations?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. Our cloud database synchronizes profiles across all workspace kiosk tablets, allowing workers to check-in at any designated outlet.
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ===== CTA BANNER ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12">
     <div class="bg-gradient-to-tr from-violet-650 to-indigo-700 rounded-3xl p-10 text-center text-white space-y-6">
         <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Simplify hospitality shift operations today</h2>
-        <p class="text-slate-200 text-xs max-w-md mx-auto">Track rosters and manage splits across hotel branches. Try it out free.</p>
+        <p class="text-slate-200 text-xs max-w-md mx-auto">Track rosters and manage splits across hotel branches. Access your console dashboard today.</p>
         <div class="flex justify-center gap-4">
-            <a href="{{ route('login') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">Start Free Trial</a>
-            <a href="{{ route('contact') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Talk to Sales</a>
+            <a href="{{ route('pricing') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">View Pricing</a>
+            <a href="{{ route('demo') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Book Demo</a>
         </div>
     </div>
 </section>

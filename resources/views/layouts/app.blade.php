@@ -87,6 +87,10 @@
                             <i data-lucide="users" class="w-6 h-6"></i>
                             <span class="font-bold text-sm uppercase tracking-wide">Users</span>
                         </a>
+                        <a href="{{ route('demo.requests.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('demo.requests.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                            <i data-lucide="inbox" class="w-6 h-6"></i>
+                            <span class="font-bold text-sm uppercase tracking-wide">Demo Requests</span>
+                        </a>
                         <a href="{{ route('profile.edit') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('profile.edit') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
                             <i data-lucide="user" class="w-6 h-6"></i>
                             <span class="font-bold text-sm uppercase tracking-wide">Profile</span>
@@ -141,6 +145,12 @@
                            class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('users.index') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
                             <i data-lucide="users" class="w-6 h-6 shrink-0"></i>
                             <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Users</span>
+                        </a>
+
+                        <a href="{{ route('demo.requests.index') }}" 
+                           class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('demo.requests.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                            <i data-lucide="inbox" class="w-6 h-6 shrink-0"></i>
+                            <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Demo Requests</span>
                         </a>
 
                         <a href="{{ route('profile.edit') }}" 

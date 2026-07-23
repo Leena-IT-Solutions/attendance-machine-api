@@ -17,10 +17,6 @@
     <p class="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
         Prevent cross-contamination while coordinating complex 24/7 rotational shifts for nursing staff, medical doctors, and lab technicians.
     </p>
-    <div class="flex justify-center gap-4 pt-2">
-        <a href="{{ route('demo') }}" class="btn btn-primary text-xs px-6 py-3.5">Schedule Hospital Demo</a>
-        <a href="{{ route('contact') }}" class="btn btn-outline text-xs px-6 py-3.5">Contact Sales</a>
-    </div>
 </section>
 
 <!-- ===== BENEFITS SECTION ===== -->
@@ -73,41 +69,15 @@
     </div>
 </section>
 
-<!-- ===== FAQS ACCORDION ===== -->
-<section class="max-w-4xl mx-auto px-6 py-12 space-y-6">
-    <h3 class="font-outfit text-2xl font-black text-center text-slate-900">Healthcare FAQs</h3>
-    
-    <div class="space-y-3">
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Does the AI scanner work if doctors are wearing surgical masks?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                For security and verification accuracy, the AI face scan requires a clear view of the nose, eyes, and mouth lines. Medical staff should pull down masks momentarily to verify.
-            </div>
-        </div>
-
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Can the system export reports sorted by medical ward departments?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. Under database profiles, you categorize staff by departments (e.g. ICU, Emergency, Outpatient), and download logs filtered accordingly.
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ===== CTA BANNER ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12">
     <div class="bg-gradient-to-tr from-violet-650 to-indigo-700 rounded-3xl p-10 text-center text-white space-y-6">
         <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Optimize hospital shift coordination today</h2>
-        <p class="text-slate-200 text-xs max-w-md mx-auto">Manage rosters across wards. Setup the contactless tablet trial completely free.</p>
+        <p class="text-slate-200 text-xs max-w-md mx-auto">Manage rosters across medical wards with our contactless tablet solution.</p>
         <div class="flex justify-center gap-4">
-            <a href="{{ route('login') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">Start Free Trial</a>
-            <a href="{{ route('contact') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Talk to Sales</a>
+            <a href="{{ route('pricing') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">View Pricing</a>
+            <a href="{{ route('demo') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Book Demo</a>
         </div>
     </div>
 </section>

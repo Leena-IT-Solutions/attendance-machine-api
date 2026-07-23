@@ -69,7 +69,7 @@
         </div>
 
         <div class="text-center pt-2">
-            <a href="{{ route('login') }}" class="btn btn-primary px-8 py-4 text-xs font-bold shadow-lg">Activate This Plan Now</a>
+            <button id="btn-pay-calculator" class="btn btn-primary px-8 py-4 text-xs font-bold shadow-lg">Pay & Activate Plan</button>
         </div>
     </div>
 </section>
@@ -114,13 +114,13 @@
                 <ul class="space-y-3 text-xs text-slate-600 pt-6 border-t border-slate-50">
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Up to 100 staff members</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> AI Contactless Face Check-in</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Offline mode support</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Real-time cloud logging</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Custom shifts & Overtime deductions</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Export Excel/PDF sheets</li>
                 </ul>
             </div>
             <div class="pt-8">
-                <a href="{{ route('login') }}" class="btn btn-primary w-full text-center text-xs py-3 font-bold">Start 14-day Free Trial</a>
+                <button onclick="openRazorpayCheckout('Premium Pro', 500, 'Monthly')" class="btn btn-primary w-full text-center text-xs py-3 font-bold">Pay & Activate Pro</button>
             </div>
         </div>
 
@@ -136,14 +136,14 @@
                 </div>
                 <ul class="space-y-3 text-xs text-slate-600 pt-6 border-t border-slate-50">
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Unlimited employees and devices</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> All Pro shifts & offline features</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> All Pro shifts & roster features</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Developer API integrations & Webhooks</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Dedicated customer support manager</li>
                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Custom backup & uptime compliance SLA</li>
                 </ul>
             </div>
             <div class="pt-8">
-                <a href="{{ route('login') }}" class="btn btn-outline w-full text-center text-xs py-3 font-bold">Contact Sales Team</a>
+                <button onclick="openRazorpayCheckout('Corporate Unlimited', 1000, 'Monthly')" class="btn btn-outline w-full text-center text-xs py-3 font-bold">Pay & Activate Corporate</button>
             </div>
         </div>
     </div>
@@ -180,8 +180,8 @@
                     <td class="p-4 text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
                 </tr>
                 <tr>
-                    <td class="p-4 font-bold text-slate-800">Offline Sync Mode</td>
-                    <td class="p-4 text-slate-300 text-lg"><i class="fa-solid fa-circle-xmark"></i></td>
+                    <td class="p-4 font-bold text-slate-800">Real-Time Cloud Sync</td>
+                    <td class="p-4 text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
                     <td class="p-4 text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
                     <td class="p-4 text-emerald-500 text-lg"><i class="fa-solid fa-circle-check"></i></td>
                 </tr>
@@ -208,3 +208,65 @@
     </div>
 </section>
 @endsection
+
+@section('scripts')
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+function openRazorpayCheckout(planName, amount, period) {
+    if (amount === 0) {
+        window.location.href = "{{ route('login') }}";
+        return;
+    }
+
+    var options = {
+        "key": "rzp_test_dummykey", // Test mode public key placeholder
+        "amount": amount * 100, // Amount in paise
+        "currency": "INR",
+        "name": "Attendance Machine",
+        "description": planName + " subscription (" + period + ")",
+        "image": "{{ asset('icon.png') }}",
+        "handler": function (response){
+            alert("Payment Successful! Transaction ID: " + response.razorpay_payment_id + "\nRedirecting to setup your workspace...");
+            window.location.href = "{{ route('register') }}?plan=" + encodeURIComponent(planName) + "&payment_id=" + response.razorpay_payment_id;
+        },
+        "prefill": {
+            "name": "Customer Name",
+            "email": "customer@example.com",
+            "contact": "9999999999"
+        },
+        "theme": {
+            "color": "#7c3aed"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const payCalculatorBtn = document.getElementById('btn-pay-calculator');
+    const employeeSlider = document.getElementById('employee-slider');
+    
+    if (payCalculatorBtn && employeeSlider) {
+        payCalculatorBtn.addEventListener('click', () => {
+            const index = parseInt(employeeSlider.value);
+            // Re-read tiers configuration matching public/landing-assets/js/app.js
+            const tiers = [
+                { count: '5', label: 'Up to 5 Staff', monthly: 25, yearly: 250 },
+                { count: '10', label: 'Up to 10 Staff', monthly: 50, yearly: 500 },
+                { count: '20', label: 'Up to 20 Staff', monthly: 100, yearly: 1000 },
+                { count: '50', label: 'Up to 50 Staff', monthly: 250, yearly: 2500 },
+                { count: '100', label: 'Up to 100 Staff', monthly: 500, yearly: 5000 },
+                { count: 'Unlimited', label: 'Unlimited Staff', monthly: 1000, yearly: 10000 }
+            ];
+            
+            const currentTier = tiers[index];
+            const billingCycle = document.getElementById('billing-yearly').classList.contains('bg-white') ? 'yearly' : 'monthly';
+            const amount = billingCycle === 'yearly' ? currentTier.yearly : currentTier.monthly;
+            const period = billingCycle === 'yearly' ? 'Yearly' : 'Monthly';
+            
+            openRazorpayCheckout(currentTier.label, amount, period);
+        });
+    }
+});
+</script>
+

@@ -17,10 +17,6 @@
     <p class="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
         Verify student arrivals, manage teacher schedules, and automate daily registers with high-speed contactless face recognition tablets.
     </p>
-    <div class="flex justify-center gap-4 pt-2">
-        <a href="{{ route('demo') }}" class="btn btn-primary text-xs px-6 py-3.5">Schedule Academic Demo</a>
-        <a href="{{ route('contact') }}" class="btn btn-outline text-xs px-6 py-3.5">Contact Sales</a>
-    </div>
 </section>
 
 <!-- ===== BENEFITS SECTION ===== -->
@@ -73,41 +69,15 @@
     </div>
 </section>
 
-<!-- ===== FAQS ACCORDION ===== -->
-<section class="max-w-4xl mx-auto px-6 py-12 space-y-6">
-    <h3 class="font-outfit text-2xl font-black text-center text-slate-900">Education FAQs</h3>
-    
-    <div class="space-y-3">
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Can student lists be grouped by academic grades and divisions?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. Under dashboard directory lists, administrators group student records by classes, divisions, or departments, filtering report logs accordingly.
-            </div>
-        </div>
-
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>How secure is student biometric data?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Student privacy is protected. We compile face maps into abstract 512-bit math vectors. No image files are saved locally, ensuring compliance with student privacy regulations.
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ===== CTA BANNER ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12">
     <div class="bg-gradient-to-tr from-violet-650 to-indigo-700 rounded-3xl p-10 text-center text-white space-y-6">
         <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Optimize your academic registers today</h2>
-        <p class="text-slate-200 text-xs max-w-md mx-auto">Deploy contactless kiosks across your school branches. Try it free.</p>
+        <p class="text-slate-200 text-xs max-w-md mx-auto">Deploy contactless kiosks across your school branches today.</p>
         <div class="flex justify-center gap-4">
-            <a href="{{ route('login') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">Start Free Trial</a>
-            <a href="{{ route('contact') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Talk to Sales</a>
+            <a href="{{ route('pricing') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">View Pricing</a>
+            <a href="{{ route('demo') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Book Demo</a>
         </div>
     </div>
 </section>

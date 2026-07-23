@@ -17,10 +17,6 @@
     <p class="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
         Organize floor staff rosters, compare department punctuality metrics, and calculate payable hours based on shift rules.
     </p>
-    <div class="flex justify-center gap-4 pt-2">
-        <a href="{{ route('demo') }}" class="btn btn-primary text-xs px-6 py-3.5">Schedule Plant Demo</a>
-        <a href="{{ route('contact') }}" class="btn btn-outline text-xs px-6 py-3.5">Contact Sales</a>
-    </div>
 </section>
 
 <!-- ===== BENEFITS SECTION ===== -->
@@ -73,32 +69,6 @@
     </div>
 </section>
 
-<!-- ===== FAQS ACCORDION ===== -->
-<section class="max-w-4xl mx-auto px-6 py-12 space-y-6">
-    <h3 class="font-outfit text-2xl font-black text-center text-slate-900">Manufacturing FAQs</h3>
-    
-    <div class="space-y-3">
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Can we customize general shift overtime thresholds?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. Under settings, you define overtime start buffers. If a general morning shift ends at 18:00, you can configure the system to calculate overtime only after 18:30.
-            </div>
-        </div>
-
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Does the system sync with enterprise ERP applications?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. We offer Developer APIs and secure webhook notifications to push real-time check-in events directly into custom ERP databases.
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ===== CTA BANNER ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12">
@@ -106,8 +76,8 @@
         <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Optimize your plant floor schedules today</h2>
         <p class="text-slate-200 text-xs max-w-md mx-auto">Integrate our deduction rules engine and simplify accountant worksheets.</p>
         <div class="flex justify-center gap-4">
-            <a href="{{ route('pricing') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">View Subscriptions</a>
-            <a href="{{ route('contact') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Request Setup Call</a>
+            <a href="{{ route('pricing') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">View Pricing</a>
+            <a href="{{ route('demo') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Book Demo</a>
         </div>
     </div>
 </section>

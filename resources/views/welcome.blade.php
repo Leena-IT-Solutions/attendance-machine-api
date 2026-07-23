@@ -107,29 +107,16 @@
         
         <div class="absolute bottom-6 -left-6 floating-badge bg-white shadow-xl rounded-2xl p-4 flex items-center gap-3 border border-slate-100 animate-float-delayed">
             <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
-                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <i class="fa-solid fa-cloud"></i>
             </div>
             <div>
-                <p class="text-xs font-bold text-slate-800">Offline Mode</p>
-                <p class="text-[10px] text-slate-550">Stores punches offline</p>
+                <p class="text-xs font-bold text-slate-800">Cloud Synced</p>
+                <p class="text-[10px] text-slate-550">Instant data refresh</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== 2. TRUSTED BY ===== -->
-<section class="bg-slate-50 border-y border-slate-150 py-10">
-    <div class="max-w-7xl mx-auto px-6 text-center space-y-4">
-        <p class="text-[10px] font-bold text-slate-450 uppercase tracking-widest">Trusted by 10,000+ Operations Managers & HR Leads</p>
-        <div class="flex flex-wrap justify-center items-center gap-12 opacity-40">
-            <span class="font-outfit font-black text-slate-800 text-lg tracking-wider">LEENA IT</span>
-            <span class="font-outfit font-black text-slate-800 text-lg tracking-wider">ACME CORP</span>
-            <span class="font-outfit font-black text-slate-800 text-lg tracking-wider">GLOBEX</span>
-            <span class="font-outfit font-black text-slate-800 text-lg tracking-wider">INITECH</span>
-            <span class="font-outfit font-black text-slate-800 text-lg tracking-wider">STARK IND</span>
-        </div>
-    </div>
-</section>
 
 <!-- ===== 3. PROBLEMS SECTION ===== -->
 <section class="max-w-7xl mx-auto px-6 py-20 space-y-12">
@@ -182,10 +169,10 @@
                 </p>
             </div>
             <div class="bg-emerald-50/10 border border-emerald-100/30 rounded-3xl p-8 space-y-4">
-                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-                <h3 class="font-outfit font-bold text-slate-800 text-base">Offline Sync Support</h3>
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg"><i class="fa-solid fa-cloud"></i></div>
+                <h3 class="font-outfit font-bold text-slate-800 text-base">Real-Time Cloud Sync</h3>
                 <p class="text-slate-550 text-xs leading-relaxed">
-                    No active internet required. The application registers punches locally and syncs automatically once reconnected.
+                    All logs are immediately synced to your cloud dashboard, offering real-time visibility from anywhere.
                 </p>
             </div>
             <div class="bg-emerald-50/10 border border-emerald-100/30 rounded-3xl p-8 space-y-4">
@@ -267,9 +254,9 @@
 
         <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
             <div class="space-y-3">
-                <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-                <h4 class="font-outfit font-bold text-slate-800 text-base">Offline Mode</h4>
-                <p class="text-slate-550 text-xs leading-relaxed">Punch attendance locally on device internal storage with cloud sync.</p>
+                <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center"><i class="fa-solid fa-users-gear"></i></div>
+                <h4 class="font-outfit font-bold text-slate-800 text-base">Staff Roster Logs</h4>
+                <p class="text-slate-550 text-xs leading-relaxed">Manage employee information, departments, and active directories seamlessly.</p>
             </div>
             <a href="{{ route('features.detail.employee-management') }}" class="text-xs text-violet-600 font-bold mt-4 inline-flex items-center gap-1">Explore <i class="fa-solid fa-chevron-right"></i></a>
         </div>
@@ -299,43 +286,14 @@
                 <div class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[8px] text-violet-500"></i> Admin Panel Preview</div>
                 <span>Workspace: HQ-Main</span>
             </div>
-            <!-- Matrix visual -->
-            <div class="grid grid-cols-7 gap-2 text-center text-[10px]">
-                <span class="font-bold text-slate-400">MON</span>
-                <span class="font-bold text-slate-400">TUE</span>
-                <span class="font-bold text-slate-400">WED</span>
-                <span class="font-bold text-slate-400">THU</span>
-                <span class="font-bold text-slate-400">FRI</span>
-                <span class="font-bold text-slate-400">SAT</span>
-                <span class="font-bold text-slate-400">SUN</span>
-
-                <span class="p-2.5 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold">P</span>
-                <span class="p-2.5 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold">P</span>
-                <span class="p-2.5 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold">P</span>
-                <span class="p-2.5 rounded-lg bg-amber-50 text-amber-700 font-extrabold">L</span>
-                <span class="p-2.5 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold">P</span>
-                <span class="p-2.5 rounded-lg bg-rose-50 text-rose-700 font-extrabold">A</span>
-                <span class="p-2.5 rounded-lg text-slate-400 font-bold">Off</span>
+            <!-- High-Fidelity Dashboard Screenshot -->
+            <div class="overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
+                <img src="{{ asset('landing-assets/images/dashboard_preview.png') }}" alt="Attendance & Payroll Admin Dashboard Preview" class="w-full h-auto object-cover">
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== 8. DEMO VIDEO SECTION ===== -->
-<section class="max-w-7xl mx-auto px-6 py-20 text-center space-y-6">
-    <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden group max-w-4xl mx-auto shadow-2xl">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.15),transparent_70%)] pointer-events-none"></div>
-        <div class="space-y-4 max-w-md mx-auto relative z-10">
-            <h3 class="font-outfit text-xl sm:text-2xl font-black">Watch Attendance Machine in Action</h3>
-            <p class="text-slate-400 text-xs">See a live presentation explaining our contact-free checks, custom shift planners, and LOP payroll outputs in 60 seconds.</p>
-            <div class="pt-4">
-                <button onclick="document.getElementById('btn-watch-demo').click()" class="btn btn-primary text-xs px-8 py-3.5 shadow-lg group-hover:scale-105 transition-transform flex items-center gap-2 mx-auto font-bold">
-                    <i class="fa-solid fa-circle-play text-base"></i> Launch Demo Video
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ===== 9. INDUSTRIES ===== -->
 <section class="bg-white border-y border-slate-100 py-20">
@@ -399,33 +357,9 @@
         <a href="{{ route('reports') }}" class="btn btn-primary text-xs px-6 py-3 font-bold inline-block shadow-md">Preview Formats</a>
     </div>
     
-    <div class="md:col-span-7 bg-slate-50 border border-slate-100 rounded-3xl p-6">
-        <!-- Roster Table Mock -->
-        <div class="overflow-x-auto border border-slate-150 rounded-xl bg-white text-[10px]">
-            <table class="w-full text-left border-collapse">
-                <thead class="bg-slate-50 font-bold text-slate-500">
-                    <tr class="border-b border-slate-150">
-                        <th class="p-3">Staff</th>
-                        <th class="p-3 text-center">Days present</th>
-                        <th class="p-3 text-center">Late marks</th>
-                        <th class="p-3 text-center">LOP</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 text-slate-650">
-                    <tr>
-                        <td class="p-3 font-bold text-slate-800">John Doe</td>
-                        <td class="p-3 text-center font-bold text-emerald-600">26 / 26</td>
-                        <td class="p-3 text-center">0</td>
-                        <td class="p-3 text-center font-bold">0.0</td>
-                    </tr>
-                    <tr>
-                        <td class="p-3 font-bold text-slate-800">Jane Smith</td>
-                        <td class="p-3 text-center font-bold text-emerald-600 font-bold">24 / 26</td>
-                        <td class="p-3 text-center text-amber-600 font-bold">4</td>
-                        <td class="p-3 text-center text-rose-600 font-bold">1.5</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="md:col-span-7 bg-slate-50 border border-slate-100 rounded-3xl p-6 flex items-center justify-center">
+        <div class="overflow-hidden rounded-2xl border border-slate-150 bg-white shadow-sm w-full">
+            <img src="{{ asset('landing-assets/images/payroll_preview.png') }}" alt="Payroll & Attendance Summary Report Preview" class="w-full h-auto object-cover">
         </div>
     </div>
 </section>
@@ -490,7 +424,7 @@
         <div class="bg-white border border-slate-100 rounded-3xl p-8 space-y-4 shadow-sm">
             <div class="text-amber-400 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
             <p class="text-slate-600 text-xs leading-relaxed">
-                "The offline sync works flawlessly at our remote construction project perimeters. Coordinates check verification keeps billing entries fully auditable."
+                "The face recognition works flawlessly at our construction project locations. Facial match verification keeps billing entries fully auditable."
             </p>
             <div>
                 <p class="text-xs font-bold text-slate-800 leading-none">Amit Joshi</p>
@@ -514,15 +448,15 @@
             <div class="bg-white border border-slate-150 rounded-3xl p-8 shadow-sm space-y-6 flex flex-col justify-between">
                 <div class="space-y-4">
                     <h3 class="font-outfit font-extrabold text-lg text-slate-800 leading-none">Free Tier</h3>
-                    <p class="text-slate-500 text-xs">For small startups or retail teams.</p>
+                    <p class="text-slate-550 text-xs">For small startups or retail teams.</p>
                     <div class="text-slate-800 font-outfit"><strong class="text-3xl font-black">₹0</strong> <span class="text-xs text-slate-450 font-bold">/ Month</span></div>
                     <ul class="space-y-3 text-xs text-slate-550 border-t border-slate-50 pt-4">
                         <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Up to 2 staff profiles</li>
                         <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Standard facial kiosk scan</li>
-                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Offline sync support</li>
+                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Standard reports exports</li>
                     </ul>
                 </div>
-                <a href="{{ route('login') }}" class="btn btn-outline w-full text-center text-xs py-3 font-bold block">Start Free</a>
+                <a href="{{ route('pricing') }}" class="btn btn-outline w-full text-center text-xs py-3 font-bold block">Select Free Tier</a>
             </div>
 
             <!-- Premium Pro Plan -->
@@ -531,7 +465,7 @@
                 <div class="space-y-4">
                     <h3 class="font-outfit font-extrabold text-lg text-slate-800 leading-none">Premium Pro</h3>
                     <p class="text-slate-550 text-xs">For growing factories and shops.</p>
-                    <div class="text-slate-800 font-outfit"><strong class="text-3xl font-black">₹250</strong> <span class="text-xs text-slate-450 font-bold">/ Month</span></div>
+                    <div class="text-slate-800 font-outfit"><strong class="text-3xl font-black">₹500</strong> <span class="text-xs text-slate-450 font-bold">/ Month</span></div>
                     <ul class="space-y-3 text-xs text-slate-550 border-t border-slate-50 pt-4">
                         <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Up to 100+ staff profiles</li>
                         <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Custom shifts scheduling</li>
@@ -539,23 +473,23 @@
                         <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Premium Excel/PDF output</li>
                     </ul>
                 </div>
-                <a href="{{ route('login') }}" class="btn btn-primary w-full text-center text-xs py-3 font-bold block">Start Pro Trial</a>
+                <a href="{{ route('pricing') }}" class="btn btn-primary w-full text-center text-xs py-3 font-bold block">Buy Premium Pro</a>
             </div>
 
-            <!-- Enterprise Plan -->
+            <!-- Corporate Unlimited Plan -->
             <div class="bg-white border border-slate-150 rounded-3xl p-8 shadow-sm space-y-6 flex flex-col justify-between">
                 <div class="space-y-4">
-                    <h3 class="font-outfit font-extrabold text-lg text-slate-800 leading-none">Enterprise</h3>
-                    <p class="text-slate-500 text-xs">For distributed corporate chains.</p>
-                    <div class="text-slate-800 font-outfit"><strong class="text-3xl font-black">Custom</strong> <span class="text-xs text-slate-450 font-bold">/ Quote</span></div>
+                    <h3 class="font-outfit font-extrabold text-lg text-slate-800 leading-none">Corporate Unlimited</h3>
+                    <p class="text-slate-550 text-xs">Unlimited staff capacity with flat rate.</p>
+                    <div class="text-slate-800 font-outfit"><strong class="text-3xl font-black">₹1,000</strong> <span class="text-xs text-slate-450 font-bold">/ Month</span></div>
                     <ul class="space-y-3 text-xs text-slate-550 border-t border-slate-50 pt-4">
                         <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Unlimited staff profiles</li>
-                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Developer REST APIs</li>
-                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Real-time JSON webhook push</li>
-                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> 24/7 WhatsApp engineers SLA</li>
+                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> All Pro shifts & roster features</li>
+                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Developer REST APIs & Webhooks</li>
+                        <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Dedicated customer support manager</li>
                     </ul>
                 </div>
-                <a href="{{ route('contact') }}" class="btn btn-outline w-full text-center text-xs py-3 font-bold block">Contact Sales</a>
+                <a href="{{ route('pricing') }}" class="btn btn-outline w-full text-center text-xs py-3 font-bold block">Buy Corporate Unlimited</a>
             </div>
         </div>
     </div>
@@ -578,11 +512,11 @@
 
         <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
             <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>What happens to check-in logs if the tablet loses internet connectivity?</span>
+                <span>Does the app require a continuous internet connection?</span>
                 <i class="fa-solid fa-chevron-down text-slate-400"></i>
             </button>
             <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Offline Mode registers punches locally in internal device storage. Once network connection is restored, logs sync to the cloud database automatically.
+                Yes. Active internet connection is required to authenticate employee face signatures against the secure cloud database in real-time.
             </div>
         </div>
     </div>
@@ -635,7 +569,7 @@
             Ready to upgrade your team check-ins?
         </h2>
         <p class="text-slate-200 text-sm max-w-lg mx-auto">
-            Get started with our free trial tier today. No credit cards, setup setup fees, or biometric readers required.
+            Get started with our free tier today. No setup fees or biometric readers required.
         </p>
 
         <div class="flex flex-wrap justify-center gap-4 pt-4">

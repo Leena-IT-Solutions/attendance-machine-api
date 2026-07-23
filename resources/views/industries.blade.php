@@ -173,7 +173,7 @@
                 <div class="space-y-2">
                     <h3 class="font-outfit font-extrabold text-slate-900 text-lg">Construction Sites</h3>
                     <p class="text-slate-550 text-xs leading-relaxed">
-                        Works 100% offline at remote, unpowered sites. Face biometric signatures ensure daily wage laborers are physically present.
+                        Deployable on mobile devices at remote, unpowered sites. Face biometric signatures ensure daily wage laborers are physically present.
                     </p>
                 </div>
             </div>
@@ -228,11 +228,12 @@
 
 <!-- ===== CTA BANNER ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12">
-    <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-center space-y-4 text-white">
-        <h3 class="font-outfit text-xl sm:text-2xl font-bold">Need a customized integration setup?</h3>
-        <p class="text-slate-400 text-xs max-w-md mx-auto">Our implementation engineers can custom-build settings to align with your industry's payroll rules.</p>
-        <div class="pt-2">
-            <a href="{{ route('demo') }}" class="btn btn-primary text-xs px-6 py-3">Schedule Custom Live Demo</a>
+    <div class="bg-gradient-to-tr from-violet-650 to-indigo-700 rounded-3xl p-10 text-center text-white space-y-6">
+        <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Need a customized integration setup?</h2>
+        <p class="text-slate-200 text-xs max-w-md mx-auto">Our implementation engineers can custom-build settings to align with your industry's payroll rules.</p>
+        <div class="flex justify-center gap-4">
+            <a href="{{ route('pricing') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">View Pricing</a>
+            <a href="{{ route('demo') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Book Demo</a>
         </div>
     </div>
 </section>

@@ -238,11 +238,24 @@
 
 <!-- ===== CTA BANNER ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12">
-    <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-center space-y-4 text-white">
-        <h3 class="font-outfit text-xl sm:text-2xl font-bold">Want to see all feature groups configured live?</h3>
-        <p class="text-slate-400 text-xs max-w-md mx-auto">Get in touch to arrange an customized onboarding walkthrough session mapping your team's operational requirements.</p>
-        <div class="pt-2">
-            <a href="{{ route('demo') }}" class="btn btn-primary text-xs px-6 py-3">Schedule Custom Live Demo</a>
+    <div class="bg-gradient-to-tr from-violet-650 to-indigo-700 rounded-3xl p-10 text-center text-white space-y-6">
+        <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Ready to upgrade your team check-ins?</h2>
+        <p class="text-slate-200 text-xs max-w-md mx-auto">Download the Attendance Machine application on your mobile terminal.</p>
+        <div class="flex flex-wrap justify-center items-center gap-4 pt-2">
+            <a href="https://play.google.com/store/apps/details?id=in.leenaitsolutions.attendance.machine&hl=en_IN" target="_blank" rel="noopener" class="download-badge bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300">
+                <i class="fa-brands fa-google-play text-2xl text-violet-500"></i>
+                <div class="text-left">
+                    <span class="text-slate-400 block text-[9px] leading-tight">GET IT ON</span>
+                    <strong class="text-white text-xs">Google Play</strong>
+                </div>
+            </a>
+            <a href="https://apps.apple.com/in/app/attendance-machine/id6773431736" target="_blank" rel="noopener" class="download-badge bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300">
+                <i class="fa-brands fa-apple text-2xl text-white"></i>
+                <div class="text-left">
+                    <span class="text-slate-400 block text-[9px] leading-tight">DOWNLOAD ON THE</span>
+                    <strong class="text-white text-xs">App Store</strong>
+                </div>
+            </a>
         </div>
     </div>
 </section>

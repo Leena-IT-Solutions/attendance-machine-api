@@ -17,12 +17,6 @@
     <p class="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
         Connect attendance logs directly to your custom ERP, HRMS, or databases. Trigger real-time notifications when workers punch in.
     </p>
-    <div class="flex justify-center gap-4 pt-2">
-        <a href="{{ route('api.integration') }}" class="btn btn-primary text-xs px-6 py-3.5">Launch API Console</a>
-        <button id="btn-watch-demo" class="btn btn-outline text-xs px-6 py-3.5 flex items-center gap-2">
-            <i class="fa-solid fa-circle-play text-violet-600 text-sm"></i> Watch Setup Tour
-        </button>
-    </div>
 </section>
 
 <!-- ===== BENEFITS SECTION ===== -->
@@ -52,35 +46,6 @@
     </div>
 </section>
 
-<!-- ===== VIDEO & INTERACTIVE PREVIEW ===== -->
-<section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-12 gap-12 items-center">
-    <!-- Mock Player Container (Col 6) -->
-    <div class="md:col-span-6 bg-slate-905 rounded-3xl p-6 text-white space-y-4 shadow-xl relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-tr from-violet-500/10 to-indigo-500/5 pointer-events-none"></div>
-        <div class="flex justify-between items-center text-[10px] text-slate-400">
-            <span class="font-bold flex items-center gap-1"><i class="fa-solid fa-circle text-[6px] text-emerald-500"></i> API Onboarding Guide</span>
-            <span>Duration: 1m 45s</span>
-        </div>
-        <div class="aspect-video w-full rounded-2xl bg-slate-950 flex flex-col items-center justify-center border border-slate-800/80 relative group cursor-pointer" onclick="document.getElementById('btn-watch-demo').click()">
-            <div class="w-14 h-14 rounded-full bg-violet-600 text-white flex items-center justify-center text-lg shadow-lg group-hover:scale-105 transition-transform z-10">
-                <i class="fa-solid fa-play ml-0.5"></i>
-            </div>
-            <span class="text-[9px] uppercase font-bold text-slate-400 tracking-wider mt-3 z-10">Click to watch setup guide</span>
-        </div>
-    </div>
-
-    <!-- Description Details (Col 6) -->
-    <div class="md:col-span-6 space-y-6">
-        <h2 class="font-outfit text-3xl font-black text-slate-900 leading-tight">Integrate in Minutes with Multi-Language Code</h2>
-        <p class="text-slate-600 text-xs leading-relaxed">
-            Query staff logs using REST API guidelines. Integrate with standard http calls inside Python, Node.js, PHP, or Java code structures.
-        </p>
-        <div class="border-l-2 border-violet-500 pl-4 space-y-2">
-            <h4 class="font-outfit text-xs font-bold text-slate-800">Dynamic Log Sync</h4>
-            <p class="text-slate-550 text-[11px] leading-relaxed">Retrieve sync updates using timestamps, ensuring client-side databases stay aligned without payload redundancies.</p>
-        </div>
-    </div>
-</section>
 
 <!-- ===== MOCK SCREENSHOT ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12 space-y-8">
@@ -108,41 +73,27 @@
     </div>
 </section>
 
-<!-- ===== FAQS ACCORDION ===== -->
-<section class="max-w-4xl mx-auto px-6 py-12 space-y-6">
-    <h3 class="font-outfit text-2xl font-black text-center text-slate-900">Module FAQs</h3>
-    
-    <div class="space-y-3">
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Are webhooks retried if my server is temporarily offline?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. If your endpoint returns a status code other than 200 OK, our webhook engine retries requests 5 times with exponential backoff before logging a failure.
-            </div>
-        </div>
-
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Is there a request rate limit on the endpoints?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Standard Premium API keys are throttled at 60 requests per minute, which is more than enough for regular database sync operations. Unlimited accounts support higher thresholds.
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ===== CTA BANNER ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12">
     <div class="bg-gradient-to-tr from-violet-650 to-indigo-700 rounded-3xl p-10 text-center text-white space-y-6">
-        <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Get your custom integration running</h2>
-        <p class="text-slate-200 text-xs max-w-md mx-auto">Access API configurations and developer resources on our Premium subscription tiers.</p>
-        <div class="flex justify-center gap-4">
-            <a href="{{ route('pricing') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">View Subscriptions</a>
-            <a href="{{ route('contact') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Contact Sales</a>
+        <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Ready to upgrade your team check-ins?</h2>
+        <p class="text-slate-200 text-xs max-w-md mx-auto">Download the Attendance Machine application on your mobile terminal.</p>
+        <div class="flex flex-wrap justify-center items-center gap-4 pt-2">
+            <a href="https://play.google.com/store/apps/details?id=in.leenaitsolutions.attendance.machine&hl=en_IN" target="_blank" rel="noopener" class="download-badge bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300">
+                <i class="fa-brands fa-google-play text-2xl text-violet-500"></i>
+                <div class="text-left">
+                    <span class="text-slate-400 block text-[9px] leading-tight">GET IT ON</span>
+                    <strong class="text-white text-xs">Google Play</strong>
+                </div>
+            </a>
+            <a href="https://apps.apple.com/in/app/attendance-machine/id6773431736" target="_blank" rel="noopener" class="download-badge bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300">
+                <i class="fa-brands fa-apple text-2xl text-white"></i>
+                <div class="text-left">
+                    <span class="text-slate-400 block text-[9px] leading-tight">DOWNLOAD ON THE</span>
+                    <strong class="text-white text-xs">App Store</strong>
+                </div>
+            </a>
         </div>
     </div>
 </section>

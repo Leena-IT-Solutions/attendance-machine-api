@@ -44,10 +44,6 @@ Route::get('/api-integration', function () {
     return view('api-integration');
 })->name('api.integration');
 
-Route::get('/faq', function () {
-    return view('faq');
-})->name('faq');
-
 Route::get('/blog', function () {
     $posts = \App\Models\BlogPost::latest()->get();
     return view('blog', compact('posts'));
@@ -61,6 +57,8 @@ Route::get('/blog/{slug}', function ($slug) {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+Route::post('/demo-request', [\App\Http\Controllers\DemoRequestController::class, 'store'])->name('demo.request.store');
 
 Route::prefix('features')->group(function () {
     Route::get('/face-recognition', function () {
@@ -174,6 +172,8 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('blogs', \App\Http\Controllers\BlogPostController::class);
+    Route::get('/demo-requests', [\App\Http\Controllers\DemoRequestController::class, 'index'])->name('demo.requests.index');
+    Route::delete('/demo-requests/{demoRequest}', [\App\Http\Controllers\DemoRequestController::class, 'destroy'])->name('demo.requests.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

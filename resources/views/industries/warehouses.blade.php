@@ -17,10 +17,6 @@
     <p class="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
         Coordinate shifts for distributed logistics locations, monitor loading docks rosters, and verify driver check-ins instantly.
     </p>
-    <div class="flex justify-center gap-4 pt-2">
-        <a href="{{ route('demo') }}" class="btn btn-primary text-xs px-6 py-3.5">Schedule Logistics Demo</a>
-        <a href="{{ route('contact') }}" class="btn btn-outline text-xs px-6 py-3.5">Contact Sales</a>
-    </div>
 </section>
 
 <!-- ===== BENEFITS SECTION ===== -->
@@ -41,10 +37,10 @@
             </p>
         </div>
         <div class="space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center text-base"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-            <h3 class="font-outfit font-bold text-slate-800 text-base">Offline Sync Mode</h3>
+            <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center text-base"><i class="fa-solid fa-cloud"></i></div>
+            <h3 class="font-outfit font-bold text-slate-800 text-base">Real-Time Cloud Logs</h3>
             <p class="text-slate-550 text-xs leading-relaxed">
-                Stores punches locally in basement or remote warehouse segments, syncing once internet connection returns.
+                Syncs punches directly to the master console, giving administrators visibility over multi-warehouse shifts.
             </p>
         </div>
     </div>
@@ -67,47 +63,21 @@
         <div class="bg-emerald-50/50 p-6 rounded-2xl border border-emerald-100/50 space-y-2">
             <h4 class="font-outfit text-xs font-bold text-emerald-800 uppercase tracking-wider">Our AI Approach:</h4>
             <p class="text-[11px] text-slate-650 leading-relaxed">
-                Contactless tablets authenticate employee profiles instantly. Offline sync registers attendance checks, uploading to the cloud once network is active.
+                Contactless tablets authenticate employee profiles instantly. Real-time sync registers attendance checks, uploading to the cloud server immediately.
             </p>
         </div>
     </div>
 </section>
 
-<!-- ===== FAQS ACCORDION ===== -->
-<section class="max-w-4xl mx-auto px-6 py-12 space-y-6">
-    <h3 class="font-outfit text-2xl font-black text-center text-slate-900">Warehouse FAQs</h3>
-    
-    <div class="space-y-3">
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Can we configure multiple check-in terminals for different warehouses?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. Under settings, managers can register multiple tablet terminals under a single corporate workspace, mapping check logs to each respective warehouse.
-            </div>
-        </div>
-
-        <div class="faq-item bg-white border border-slate-100 rounded-2xl p-4 transition-all">
-            <button onclick="toggleFaq(this)" class="faq-toggle w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-900 focus:outline-none">
-                <span>Does the app work in low-light loading bays?</span>
-                <i class="fa-solid fa-chevron-down text-slate-400"></i>
-            </button>
-            <div class="faq-answer hidden text-[11px] text-slate-600 mt-3 pt-3 border-t border-slate-50 leading-relaxed">
-                Yes. Our AI adjusts image contrast in low-light environments. However, for maximum check-in speeds, we recommend setting up the kiosk near well-lit entrance areas.
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ===== CTA BANNER ===== -->
 <section class="max-w-7xl mx-auto px-6 py-12">
     <div class="bg-gradient-to-tr from-violet-650 to-indigo-700 rounded-3xl p-10 text-center text-white space-y-6">
         <h2 class="font-outfit text-2xl sm:text-3xl font-black max-w-xl mx-auto">Optimize your warehouse coordination today</h2>
-        <p class="text-slate-200 text-xs max-w-md mx-auto">Deploy contactless kiosk tablets. Start your free trial today.</p>
+        <p class="text-slate-200 text-xs max-w-md mx-auto">Deploy contactless kiosk tablets across your warehouse facilities today.</p>
         <div class="flex justify-center gap-4">
-            <a href="{{ route('login') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">Start Free Trial</a>
-            <a href="{{ route('contact') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Talk to Sales</a>
+            <a href="{{ route('pricing') }}" class="btn bg-white text-slate-900 text-xs px-6 py-3 font-bold">View Pricing</a>
+            <a href="{{ route('demo') }}" class="btn btn-outline border-white/20 text-white hover:bg-white/5 text-xs px-6 py-3 font-bold">Book Demo</a>
         </div>
     </div>
 </section>

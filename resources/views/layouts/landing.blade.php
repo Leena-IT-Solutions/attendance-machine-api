@@ -87,7 +87,6 @@
                 <a href="{{ route('demo') }}" class="{{ request()->routeIs('demo') ? 'text-violet-600 border-b-2 border-violet-600 pb-1' : 'hover:text-violet-600' }} transition-all">Demo</a>
                 <a href="{{ route('reports') }}" class="{{ request()->routeIs('reports') ? 'text-violet-600 border-b-2 border-violet-600 pb-1' : 'hover:text-violet-600' }} transition-all">Reports</a>
                 <a href="{{ route('api.integration') }}" class="{{ request()->routeIs('api.integration') ? 'text-violet-600 border-b-2 border-violet-600 pb-1' : 'hover:text-violet-600' }} transition-all">API Integration</a>
-                <a href="{{ route('faq') }}" class="{{ request()->routeIs('faq') ? 'text-violet-600 border-b-2 border-violet-600 pb-1' : 'hover:text-violet-600' }} transition-all">FAQ</a>
                 <a href="{{ route('blog') }}" class="{{ request()->routeIs('blog') ? 'text-violet-600 border-b-2 border-violet-600 pb-1' : 'hover:text-violet-600' }} transition-all">Blog</a>
                 <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'text-violet-600 border-b-2 border-violet-600 pb-1' : 'hover:text-violet-600' }} transition-all">Contact</a>
             </nav>
@@ -116,7 +115,6 @@
             <a href="{{ route('demo') }}" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors {{ request()->routeIs('demo') ? 'text-violet-600 font-bold' : '' }}" onclick="toggleMenu()">Demo</a>
             <a href="{{ route('reports') }}" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors {{ request()->routeIs('reports') ? 'text-violet-600 font-bold' : '' }}" onclick="toggleMenu()">Reports</a>
             <a href="{{ route('api.integration') }}" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors {{ request()->routeIs('api.integration') ? 'text-violet-600 font-bold' : '' }}" onclick="toggleMenu()">API Integration</a>
-            <a href="{{ route('faq') }}" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors {{ request()->routeIs('faq') ? 'text-violet-600 font-bold' : '' }}" onclick="toggleMenu()">FAQ</a>
             <a href="{{ route('blog') }}" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors {{ request()->routeIs('blog') ? 'text-violet-600 font-bold' : '' }}" onclick="toggleMenu()">Blog</a>
             <a href="{{ route('contact') }}" class="font-semibold text-slate-700 py-2 hover:text-violet-600 transition-colors {{ request()->routeIs('contact') ? 'text-violet-600 font-bold' : '' }}" onclick="toggleMenu()">Contact</a>
             
@@ -162,7 +160,7 @@
                     <a href="{{ route('privacy.policy') }}" class="hover:text-violet-600 transition-colors font-medium">Privacy</a>
                     <a href="{{ route('terms') }}" class="hover:text-violet-600 transition-colors font-medium">Terms</a>
                     <a href="{{ route('refund') }}" class="hover:text-violet-600 transition-colors font-medium">Refund</a>
-                    <a href="{{ route('faq') }}" class="hover:text-violet-600 transition-colors font-medium">Support</a>
+                    <a href="{{ route('contact') }}" class="hover:text-violet-600 transition-colors font-medium">Support</a>
                 </div>
             </div>
 
@@ -197,7 +195,7 @@
                         <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-slate-50 border border-slate-150 text-slate-500 hover:bg-violet-50 hover:text-violet-600 flex items-center justify-center transition-colors">
                             <i class="fa-brands fa-linkedin-in text-xs"></i>
                         </a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-slate-50 border border-slate-150 text-slate-500 hover:bg-violet-50 hover:text-violet-600 flex items-center justify-center transition-colors">
+                        <a href="https://www.facebook.com/leenaitsolution" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-slate-50 border border-slate-150 text-slate-500 hover:bg-violet-50 hover:text-violet-600 flex items-center justify-center transition-colors">
                             <i class="fa-brands fa-facebook-f text-xs font-light"></i>
                         </a>
                         <a href="https://instagram.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-slate-50 border border-slate-150 text-slate-500 hover:bg-violet-50 hover:text-violet-600 flex items-center justify-center transition-colors">
@@ -240,6 +238,17 @@
             </div>
         </div>
     </div>
+
+    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+    <a href="https://wa.me/919096189183" target="_blank" rel="noopener" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 group focus:outline-none" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <!-- Pulse effect ring -->
+        <span class="absolute inset-0 rounded-full border-4 border-[#25D366]/30 animate-ping opacity-75 pointer-events-none"></span>
+        <!-- Tooltip -->
+        <span class="absolute right-16 bg-slate-900 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md">
+            Chat with us
+        </span>
+    </a>
 
     <!-- Custom App Script -->
     <script src="{{ asset('landing-assets/js/app.js') }}?v=4"></script>

@@ -30,26 +30,41 @@
             <p class="text-slate-500 text-xs">Fill out the fields below and we'll reply within 24 hours.</p>
         </div>
 
-        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message successfully sent! Our customer service representative will respond shortly.'); this.reset();">
+        @if(session('success'))
+            <div class="p-4 text-xs font-bold text-emerald-800 bg-emerald-50 rounded-2xl border border-emerald-200 flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
+                <span>{{ session('success') }}</span>
+            </div>
+        @endif
+
+        <form action="{{ route('demo.request.store') }}" method="POST" class="space-y-4">
+            @csrf
+            <input type="hidden" name="type" value="contact">
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-1.5">
                     <label class="text-[10px] uppercase font-bold text-slate-500">Full Name</label>
-                    <input type="text" required placeholder="e.g. John Doe" class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all">
+                    <input type="text" name="name" required placeholder="e.g. John Doe" class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all">
                 </div>
                 <div class="space-y-1.5">
                     <label class="text-[10px] uppercase font-bold text-slate-500">Email Address</label>
-                    <input type="email" required placeholder="e.g. john@factory.com" class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all">
+                    <input type="email" name="email" required placeholder="e.g. john@factory.com" class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all">
                 </div>
             </div>
 
-            <div class="space-y-1.5">
-                <label class="text-[10px] uppercase font-bold text-slate-500">Subject</label>
-                <input type="text" required placeholder="e.g. Custom Corporate Demo Request" class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1.5">
+                    <label class="text-[10px] uppercase font-bold text-slate-500">Contact No / Phone</label>
+                    <input type="tel" name="phone" required placeholder="e.g. +91 9876543210" class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all">
+                </div>
+                <div class="space-y-1.5">
+                    <label class="text-[10px] uppercase font-bold text-slate-500">Subject</label>
+                    <input type="text" name="subject" required placeholder="e.g. Custom Corporate Demo Request" class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all">
+                </div>
             </div>
 
             <div class="space-y-1.5">
                 <label class="text-[10px] uppercase font-bold text-slate-500">Message Description</label>
-                <textarea rows="4" required placeholder="Outline how we can assist you..." class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all"></textarea>
+                <textarea name="comments" rows="4" required placeholder="Outline how we can assist you..." class="w-full px-4 py-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-violet-500 focus:bg-white transition-all"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary w-full text-center text-xs py-3.5 font-bold shadow-lg">Send Message</button>
@@ -81,18 +96,19 @@
             </div>
         </div>
 
-        <!-- Styled Map Placeholder -->
-        <div class="bg-slate-900 rounded-3xl p-6 h-64 text-white flex flex-col justify-between relative overflow-hidden border border-slate-800">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#7c3aed_10px,transparent_11px)] bg-[length:32px_32px] opacity-10"></div>
-            <div class="space-y-1 relative">
-                <span class="text-xs font-bold text-violet-400 uppercase tracking-widest">Office HQ</span>
-                <h4 class="font-outfit text-base font-black">Leena IT Solutions</h4>
-                <p class="text-slate-400 text-[10px]">Bengaluru, Karnataka, India</p>
+        <!-- Google Map Embedded Location -->
+        <div class="bg-white border border-slate-100 rounded-3xl p-3 shadow-sm overflow-hidden space-y-3">
+            <div class="flex items-center justify-between px-3 pt-1">
+                <div>
+                    <span class="text-[10px] font-bold text-violet-600 uppercase tracking-widest block">Office Location</span>
+                    <h4 class="font-outfit text-sm font-black text-slate-900">Leena IT Solutions</h4>
+                </div>
+                <span class="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
+                    <i class="fa-solid fa-location-dot"></i> Live Map
+                </span>
             </div>
-            
-            <div class="flex justify-between items-center text-[10px] text-slate-400 border-t border-slate-800 pt-3 relative">
-                <span>Google Map Location Tag</span>
-                <span class="text-violet-400 font-bold uppercase"><i class="fa-solid fa-map-pin"></i> Active HQ</span>
+            <div class="w-full h-64 rounded-2xl overflow-hidden border border-slate-150">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.691634027733!2d73.1799401769003!3d19.208666347790963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be79384130b3803%3A0x61a31096dee8d260!2sLITS%20%7C%20Website%20designing%20%7C%20Android%2C%20iOS%20App%20%7C%20eCommerce%20website!5e0!3m2!1sen!2sin!4v1784631165837!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </div>
     </div>

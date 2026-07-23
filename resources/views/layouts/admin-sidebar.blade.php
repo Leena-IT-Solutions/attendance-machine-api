@@ -39,6 +39,12 @@
                     <span class="font-medium" :class="{'block': open, 'hidden': !open}">Users</span>
                 </a>
 
+                <a href="{{ route('demo.requests.index') }}" 
+                   class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors {{ request()->routeIs('demo.requests.*') ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                    <i data-lucide="inbox" class="w-5 h-5"></i>
+                    <span class="font-medium" :class="{'block': open, 'hidden': !open}">Demo Requests</span>
+                </a>
+
                 <a href="{{ route('profile.edit') }}" 
                    class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors {{ request()->routeIs('profile.edit') ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
                     <i data-lucide="user" class="w-5 h-5"></i>
