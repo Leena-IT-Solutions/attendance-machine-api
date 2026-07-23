@@ -24,14 +24,14 @@ class AttendanceRecordsSeeder extends Seeder
             return;
         }
 
-        // 3. Clear existing attendance records for June 2026 to prevent duplication
+        // 3. Clear existing attendance records for June and July 2026 to prevent duplication
         AttendanceRecord::where('user_id', $user->id)
-            ->whereBetween('scan_date', ['2026-06-01', '2026-06-30'])
+            ->whereBetween('scan_date', ['2026-06-01', '2026-07-31'])
             ->delete();
 
-        // 4. Generate dates for June 2026 (June has 30 days)
+        // 4. Generate dates for June and July 2026
         $startDate = Carbon::create(2026, 6, 1)->startOfDay();
-        $endDate = Carbon::create(2026, 6, 30)->endOfDay();
+        $endDate = Carbon::create(2026, 7, 31)->endOfDay();
         
         $dates = [];
         $current = $startDate->copy();

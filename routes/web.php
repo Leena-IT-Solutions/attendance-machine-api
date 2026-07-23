@@ -156,51 +156,44 @@ Route::get('/download-apk', function () {
 })->name('download.apk');
 
 Route::get('/dashboard', function () {
-    // Historic user data (count by month)
-    $userStats = \App\Models\User::where('role', 'user')
-        ->selectRaw('COUNT(*) as count, MONTHNAME(created_at) as month, MONTH(created_at) as month_num')
-        ->groupBy('month', 'month_num')
-        ->orderBy('month_num')
-        ->get();
+    if (Auth::check()) {
+        if (Auth::user()->role === 'super_admin') {
+            return redirect()->route('super_admin.dashboard');
+        }
+        if (Auth::user()->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+    }
+    return redirect()->route('login');
+})->middleware(['auth'])->name('dashboard');
 
-    $totalEmployees = \App\Models\Employee::count();
-    $totalUsers = \App\Models\User::where('role', 'user')->count();
+// Super Admin Group (SaaS platform management)
+Route::middleware(['auth', 'super_admin'])->prefix('super-admin')->group(function () {
+    Route::get('/dashboard', function () {
+        // Historic user data (count by month)
+        $userStats = \App\Models\User::where('role', 'admin')
+            ->selectRaw('COUNT(*) as count, MONTHNAME(created_at) as month, MONTH(created_at) as month_num')
+            ->groupBy('month', 'month_num')
+            ->orderBy('month_num')
+            ->get();
 
-    return view('dashboard', compact('userStats', 'totalEmployees', 'totalUsers'));
-})->middleware(['auth', 'admin'])->name('dashboard');
+        $totalEmployees = \App\Models\Employee::count();
+        $totalUsers = \App\Models\User::where('role', 'admin')->count();
 
-Route::middleware(['auth', 'admin'])->group(function () {
+        return view('super_admin.dashboard', compact('userStats', 'totalEmployees', 'totalUsers'));
+    })->name('super_admin.dashboard');
+
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('blogs', \App\Http\Controllers\BlogPostController::class);
+    
     Route::get('/demo-requests', [\App\Http\Controllers\DemoRequestController::class, 'index'])->name('demo.requests.index');
     Route::delete('/demo-requests/{demoRequest}', [\App\Http\Controllers\DemoRequestController::class, 'destroy'])->name('demo.requests.destroy');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::post('/prune-attendance', function () {
         $cutoffDate = \Carbon\Carbon::now()->subDays(95)->toDateString();
         $deleted = \App\Models\AttendanceRecord::where('scan_date', '<', $cutoffDate)->delete();
         return back()->with('status', "Successfully pruned {$deleted} attendance records older than 95 days (before {$cutoffDate}).");
     })->name('prune.attendance');
-
-    Route::get('/employees/{code}/attendance', function ($code) {
-        $records = \App\Models\AttendanceRecord::where('employee_code', $code)
-            ->orderBy('scan_date', 'desc')
-            ->orderBy('scan_time', 'desc')
-            ->get();
-            
-        return response()->json([
-            'success' => true,
-            'records' => $records->map(function ($record) {
-                return [
-                    'scan_date' => \Carbon\Carbon::parse($record->scan_date)->format('M d, Y'),
-                    'scan_time' => \Carbon\Carbon::parse($record->scan_time)->format('h:i A'),
-                    'day_name' => \Carbon\Carbon::parse($record->scan_date)->format('l'),
-                ];
-            })
-        ]);
-    })->name('employees.attendance');
-
 
     Route::get('/git-info', function () {
         try {
@@ -279,6 +272,114 @@ Route::middleware(['auth', 'admin'])->group(function () {
             'output' => implode("\n", $output),
         ]);
     })->name('git.update');
+});
+
+// Admin Group (Company Owner management)
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        $user = Auth::user();
+        $totalEmployees = $user->employees()->count();
+        
+        // Today's attendance log count for this company
+        $todayStr = now()->toDateString();
+        $todayAttendance = \App\Models\AttendanceRecord::where('user_id', $user->id)
+            ->where('scan_date', $todayStr)
+            ->count();
+
+        return view('admin.dashboard', compact('totalEmployees', 'todayAttendance'));
+    })->name('admin.dashboard');
+
+    Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
+
+    Route::get('/attendance', function () {
+        $userId = Auth::id();
+        $selectedDate = request()->get('date', now()->toDateString());
+
+        $records = \App\Models\AttendanceRecord::where('user_id', $userId)
+            ->where('scan_date', $selectedDate)
+            ->orderBy('scan_time', 'asc')
+            ->get();
+
+        $grouped = $records->groupBy(function ($item) {
+            return $item->employee_code . '_' . $item->scan_date;
+        });
+
+        $attendanceLogs = [];
+        foreach ($grouped as $key => $items) {
+            $first = $items->first();
+            $last = $items->count() > 1 ? $items->last() : null;
+
+            $hours = '---';
+            if ($first && $last) {
+                $in = \Carbon\Carbon::parse($first->scan_date . ' ' . $first->scan_time);
+                $out = \Carbon\Carbon::parse($last->scan_date . ' ' . $last->scan_time);
+                $diff = $in->diff($out);
+                $hours = sprintf('%02d:%02d', $diff->h + ($diff->days * 24), $diff->i);
+            }
+
+            $attendanceLogs[] = (object)[
+                'employee_name' => $first->employee_name,
+                'employee_code' => $first->employee_code,
+                'scan_date' => $first->scan_date,
+                'in_time' => $first->scan_time,
+                'out_time' => $last ? $last->scan_time : null,
+                'hours' => $hours,
+            ];
+        }
+
+        // Paginate the collection manually
+        $page = request()->get('page', 1);
+        $perPage = 15;
+        $sliced = array_slice($attendanceLogs, ($page - 1) * $perPage, $perPage);
+        $paginatedLogs = new \Illuminate\Pagination\LengthAwarePaginator(
+            $sliced,
+            count($attendanceLogs),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
+        return view('attendance.index', compact('paginatedLogs', 'selectedDate'));
+    })->name('attendance.index');
+
+    Route::get('/employees/{code}/attendance', function ($code) {
+        $records = \App\Models\AttendanceRecord::where('user_id', Auth::id())
+            ->where('employee_code', $code)
+            ->orderBy('scan_date', 'desc')
+            ->orderBy('scan_time', 'desc')
+            ->get();
+            
+        return response()->json([
+            'success' => true,
+            'records' => $records->map(function ($record) {
+                return [
+                    'scan_date' => \Carbon\Carbon::parse($record->scan_date)->format('M d, Y'),
+                    'scan_time' => \Carbon\Carbon::parse($record->scan_time)->format('h:i A'),
+                    'day_name' => \Carbon\Carbon::parse($record->scan_date)->format('l'),
+                ];
+            })
+        ]);
+    })->name('employees.attendance');
+
+    Route::get('/reports', function () {
+        $records = \App\Models\AttendanceRecord::where('user_id', Auth::id())
+            ->orderBy('scan_date', 'desc')
+            ->orderBy('scan_time', 'desc')
+            ->take(10)
+            ->get();
+        return view('reports.index', compact('records'));
+    })->name('reports.index');
+
+    Route::get('/subscription', function () {
+        return view('subscription.index');
+    })->name('subscription.index');
+});
+
+// Shared Auth routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

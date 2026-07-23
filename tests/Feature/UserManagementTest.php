@@ -19,7 +19,7 @@ class UserManagementTest extends TestCase
 
     public function test_non_admin_user_cannot_access_users_index(): void
     {
-        $user = User::factory()->create(['role' => 'user']);
+        $user = User::factory()->create(['role' => 'admin']); // admin is not super_admin
 
         $response = $this
             ->actingAs($user)
@@ -30,7 +30,7 @@ class UserManagementTest extends TestCase
 
     public function test_admin_user_can_access_users_index_with_employee_counts(): void
     {
-        $admin = User::factory()->create(['role' => 'admin']);
+        $superAdmin = User::factory()->create(['role' => 'super_admin']);
         $user = User::factory()->create(['role' => 'user']);
         
         // Add some employees for the user
@@ -42,7 +42,7 @@ class UserManagementTest extends TestCase
         ]);
 
         $response = $this
-            ->actingAs($admin)
+            ->actingAs($superAdmin)
             ->get(route('users.index'));
 
         $response->assertOk();
@@ -57,7 +57,7 @@ class UserManagementTest extends TestCase
 
     public function test_admin_user_can_view_specific_user_and_their_employees(): void
     {
-        $admin = User::factory()->create(['role' => 'admin']);
+        $superAdmin = User::factory()->create(['role' => 'super_admin']);
         $user = User::factory()->create(['role' => 'user']);
         
         // Add an employee
@@ -69,7 +69,7 @@ class UserManagementTest extends TestCase
         ]);
 
         $response = $this
-            ->actingAs($admin)
+            ->actingAs($superAdmin)
             ->get(route('users.show', $user));
 
         $response->assertOk();

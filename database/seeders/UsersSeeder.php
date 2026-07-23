@@ -45,7 +45,7 @@ class UsersSeeder extends Seeder
                 'name' => 'Leena Admin',
                 'phone' => '+919096189183',
                 'password' => Hash::make('password'),
-                'role' => 'admin',
+                'role' => 'super_admin',
                 'subscription_tier' => 'enterprise',
                 'subscription_active' => true,
                 'max_employees' => 100,

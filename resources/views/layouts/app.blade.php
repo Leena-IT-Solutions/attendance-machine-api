@@ -71,7 +71,9 @@
                             <div class="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
                                 <i data-lucide="shield-check" class="w-6 h-6"></i>
                             </div>
-                            <span class="font-black text-lg uppercase tracking-tight">Admin</span>
+                            <span class="font-black text-lg uppercase tracking-tight">
+                                {{ auth()->user()->role === 'super_admin' ? 'Super Admin' : 'Admin' }}
+                            </span>
                         </div>
                         <button @click="mobileOpen = false" class="ml-auto p-2 text-slate-400 hover:text-white transition-colors">
                             <i data-lucide="x" class="w-6 h-6"></i>
@@ -79,18 +81,45 @@
                     </div>
 
                     <nav class="flex-1 px-6 space-y-4 py-8 overflow-y-auto custom-scrollbar">
-                        <a href="{{ route('dashboard') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
-                            <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
-                            <span class="font-bold text-sm uppercase tracking-wide">Dashboard</span>
-                        </a>
-                        <a href="{{ route('users.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('users.index') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
-                            <i data-lucide="users" class="w-6 h-6"></i>
-                            <span class="font-bold text-sm uppercase tracking-wide">Users</span>
-                        </a>
-                        <a href="{{ route('demo.requests.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('demo.requests.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
-                            <i data-lucide="inbox" class="w-6 h-6"></i>
-                            <span class="font-bold text-sm uppercase tracking-wide">Demo Requests</span>
-                        </a>
+                        @if(auth()->user()->role === 'super_admin')
+                            <a href="{{ route('super_admin.dashboard') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('super_admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Dashboard</span>
+                            </a>
+                            <a href="{{ route('users.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('users.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Users</span>
+                            </a>
+                            <a href="{{ route('blogs.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('blogs.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="newspaper" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Blog CMS</span>
+                            </a>
+                            <a href="{{ route('demo.requests.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('demo.requests.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="inbox" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Demo Requests</span>
+                            </a>
+                        @else
+                            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Dashboard</span>
+                            </a>
+                            <a href="{{ route('employees.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('employees.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="contact-2" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Employees</span>
+                            </a>
+                            <a href="{{ route('attendance.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('attendance.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="calendar-days" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Attendance Logs</span>
+                            </a>
+                            <a href="{{ route('reports.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('reports.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="file-bar-chart-2" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Reports</span>
+                            </a>
+                            <a href="{{ route('subscription.index') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('subscription.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="crown" class="w-6 h-6"></i>
+                                <span class="font-bold text-sm uppercase tracking-wide">Subscription</span>
+                            </a>
+                        @endif
                         <a href="{{ route('profile.edit') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('profile.edit') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
                             <i data-lucide="user" class="w-6 h-6"></i>
                             <span class="font-bold text-sm uppercase tracking-wide">Profile</span>
@@ -129,29 +158,69 @@
                             </div>
                             <div class="transition-opacity duration-300 whitespace-nowrap" :class="open ? 'opacity-100' : 'opacity-0 hidden'">
                                 <span class="block font-black text-xl tracking-tight leading-none uppercase">Attendance</span>
-                                <span class="block text-[10px] font-bold text-indigo-400 uppercase tracking-[0.2em] mt-1">Admin Portal</span>
+                                <span class="block text-[10px] font-bold text-indigo-400 uppercase tracking-[0.2em] mt-1">
+                                    {{ auth()->user()->role === 'super_admin' ? 'SaaS Control' : 'Company Control' }}
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <nav class="flex-1 px-6 space-y-3 mt-8 overflow-y-auto custom-scrollbar overflow-x-hidden">
-                        <a href="{{ route('dashboard') }}" 
-                           class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
-                            <i data-lucide="layout-dashboard" class="w-6 h-6 shrink-0"></i>
-                            <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Dashboard</span>
-                        </a>
+                        @if(auth()->user()->role === 'super_admin')
+                            <a href="{{ route('super_admin.dashboard') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('super_admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="layout-dashboard" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Dashboard</span>
+                            </a>
 
-                        <a href="{{ route('users.index') }}" 
-                           class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('users.index') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
-                            <i data-lucide="users" class="w-6 h-6 shrink-0"></i>
-                            <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Users</span>
-                        </a>
+                            <a href="{{ route('users.index') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('users.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="users" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Users</span>
+                            </a>
 
-                        <a href="{{ route('demo.requests.index') }}" 
-                           class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('demo.requests.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
-                            <i data-lucide="inbox" class="w-6 h-6 shrink-0"></i>
-                            <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Demo Requests</span>
-                        </a>
+                            <a href="{{ route('blogs.index') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('blogs.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="newspaper" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Blog CMS</span>
+                            </a>
+
+                            <a href="{{ route('demo.requests.index') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('demo.requests.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="inbox" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Demo Requests</span>
+                            </a>
+                        @else
+                            <a href="{{ route('admin.dashboard') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="layout-dashboard" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Dashboard</span>
+                            </a>
+
+                            <a href="{{ route('employees.index') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('employees.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="contact-2" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Employees</span>
+                            </a>
+
+                            <a href="{{ route('attendance.index') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('attendance.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="calendar-days" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Attendance Logs</span>
+                            </a>
+
+                            <a href="{{ route('reports.index') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('reports.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="file-bar-chart-2" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Reports</span>
+                            </a>
+
+                            <a href="{{ route('subscription.index') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('subscription.*') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                                <i data-lucide="crown" class="w-6 h-6 shrink-0"></i>
+                                <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Subscription</span>
+                            </a>
+                        @endif
 
                         <a href="{{ route('profile.edit') }}" 
                            class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('profile.edit') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
@@ -197,7 +266,9 @@
                         <div class="flex items-center gap-4 lg:gap-8">
                             <div class="text-right hidden sm:block">
                                 <p class="text-sm font-black text-slate-900 uppercase tracking-tight">{{ auth()->user()->name }}</p>
-                                <p class="text-[10px] text-indigo-600 font-black uppercase tracking-widest">Global Admin</p>
+                                <p class="text-[10px] text-indigo-600 font-black uppercase tracking-widest font-extrabold">
+                                    {{ auth()->user()->role === 'super_admin' ? 'Super Admin' : 'Company Owner' }}
+                                </p>
                             </div>
                             <div class="w-12 h-12 lg:w-16 lg:h-16 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400">
                                 <i data-lucide="user" class="w-6 h-6 lg:w-8 lg:h-8"></i>
