@@ -37,5 +37,19 @@ class UsersSeeder extends Seeder
                 'max_employees' => 25,
             ]
         );
+
+        // 3. Seed Leena Admin User
+        User::updateOrCreate(
+            ['email' => 'leena@example.com'],
+            [
+                'name' => 'Leena Admin',
+                'phone' => '+919096189183',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+                'subscription_tier' => 'enterprise',
+                'subscription_active' => true,
+                'max_employees' => 100,
+            ]
+        );
     }
 }

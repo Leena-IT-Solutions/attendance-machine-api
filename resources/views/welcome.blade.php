@@ -46,9 +46,9 @@
                 </a>
             @endauth
             
-            <button id="btn-watch-demo" class="btn btn-outline px-6 py-4 text-sm font-bold flex items-center gap-2">
+            <a href="https://www.youtube.com/playlist?list=PLPGWTP2pV7L8" target="_blank" rel="noopener" class="btn btn-outline px-6 py-4 text-sm font-bold flex items-center gap-2">
                 <i class="fa-solid fa-play text-violet-600"></i> Watch Demo
-            </button>
+            </a>
         </div>
     </div>
 
