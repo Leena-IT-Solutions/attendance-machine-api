@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
                 'name' => 'Acme Industries Manager',
                 'phone' => '+919876543210',
                 'password' => Hash::make('acme123'),
-                'role' => 'admin',
+                'role' => 'user',
                 'subscription_tier' => 'enterprise',
                 'subscription_active' => true,
                 'max_employees' => 100,
@@ -31,21 +31,49 @@ class UsersSeeder extends Seeder
                 'name' => 'Apex Logistics Administrator',
                 'phone' => '+919876543211',
                 'password' => Hash::make('apex123'),
-                'role' => 'admin',
+                'role' => 'user',
                 'subscription_tier' => 'pro',
                 'subscription_active' => true,
                 'max_employees' => 25,
             ]
         );
 
-        // 3. Seed Leena Admin User
+        // 3. Seed Sandeep Rathod Admin User (Project Guideline)
+        User::updateOrCreate(
+            ['email' => 'sandeep198558@gmail.com'],
+            [
+                'name' => 'Sandeep Rathod',
+                'phone' => '9664588677',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+                'subscription_tier' => 'enterprise',
+                'subscription_active' => true,
+                'max_employees' => 100,
+            ]
+        );
+
+        // 4. Seed Leena Adam Admin User (Project Guideline)
+        User::updateOrCreate(
+            ['email' => 'leenaadam28@gmail.com'],
+            [
+                'name' => 'Leena Adam',
+                'phone' => '9769409405',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+                'subscription_tier' => 'enterprise',
+                'subscription_active' => true,
+                'max_employees' => 100,
+            ]
+        );
+
+        // 5. Seed Leena Admin User (Legacy testing account)
         User::updateOrCreate(
             ['email' => 'leena@example.com'],
             [
                 'name' => 'Leena Admin',
                 'phone' => '+919096189183',
                 'password' => Hash::make('password'),
-                'role' => 'super_admin',
+                'role' => 'admin',
                 'subscription_tier' => 'enterprise',
                 'subscription_active' => true,
                 'max_employees' => 100,

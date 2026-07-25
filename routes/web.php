@@ -157,31 +157,31 @@ Route::get('/download-apk', function () {
 
 Route::get('/dashboard', function () {
     if (Auth::check()) {
-        if (Auth::user()->role === 'super_admin') {
-            return redirect()->route('super_admin.dashboard');
-        }
         if (Auth::user()->role === 'admin') {
             return redirect()->route('admin.dashboard');
+        }
+        if (Auth::user()->role === 'user') {
+            return redirect()->route('user.dashboard');
         }
     }
     return redirect()->route('login');
 })->middleware(['auth'])->name('dashboard');
 
-// Super Admin Group (SaaS platform management)
-Route::middleware(['auth', 'super_admin'])->prefix('super-admin')->group(function () {
+// Admin Group (SaaS platform management)
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         // Historic user data (count by month)
-        $userStats = \App\Models\User::where('role', 'admin')
+        $userStats = \App\Models\User::where('role', 'user')
             ->selectRaw('COUNT(*) as count, MONTHNAME(created_at) as month, MONTH(created_at) as month_num')
             ->groupBy('month', 'month_num')
             ->orderBy('month_num')
             ->get();
 
         $totalEmployees = \App\Models\Employee::count();
-        $totalUsers = \App\Models\User::where('role', 'admin')->count();
+        $totalUsers = \App\Models\User::where('role', 'user')->count();
 
-        return view('super_admin.dashboard', compact('userStats', 'totalEmployees', 'totalUsers'));
-    })->name('super_admin.dashboard');
+        return view('admin.dashboard', compact('userStats', 'totalEmployees', 'totalUsers'));
+    })->name('admin.dashboard');
 
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('blogs', \App\Http\Controllers\BlogPostController::class);
@@ -274,8 +274,8 @@ Route::middleware(['auth', 'super_admin'])->prefix('super-admin')->group(functio
     })->name('git.update');
 });
 
-// Admin Group (Company Owner management)
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+// User Group (Company Owner management)
+Route::middleware(['auth', 'user'])->prefix('user')->group(function () {
     Route::get('/dashboard', function () {
         $user = Auth::user();
         $totalEmployees = $user->employees()->count();
@@ -286,8 +286,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
             ->where('scan_date', $todayStr)
             ->count();
 
-        return view('admin.dashboard', compact('totalEmployees', 'todayAttendance'));
-    })->name('admin.dashboard');
+        return view('user.dashboard', compact('totalEmployees', 'todayAttendance'));
+    })->name('user.dashboard');
 
     Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
 

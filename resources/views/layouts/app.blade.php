@@ -72,7 +72,7 @@
                                 <i data-lucide="shield-check" class="w-6 h-6"></i>
                             </div>
                             <span class="font-black text-lg uppercase tracking-tight">
-                                {{ auth()->user()->role === 'super_admin' ? 'Super Admin' : 'Admin' }}
+                                {{ auth()->user()->role === 'admin' ? 'Admin' : 'User' }}
                             </span>
                         </div>
                         <button @click="mobileOpen = false" class="ml-auto p-2 text-slate-400 hover:text-white transition-colors">
@@ -81,8 +81,8 @@
                     </div>
 
                     <nav class="flex-1 px-6 space-y-4 py-8 overflow-y-auto custom-scrollbar">
-                        @if(auth()->user()->role === 'super_admin')
-                            <a href="{{ route('super_admin.dashboard') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('super_admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                        @if(auth()->user()->role === 'admin')
+                            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
                                 <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
                                 <span class="font-bold text-sm uppercase tracking-wide">Dashboard</span>
                             </a>
@@ -99,7 +99,7 @@
                                 <span class="font-bold text-sm uppercase tracking-wide">Demo Requests</span>
                             </a>
                         @else
-                            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                            <a href="{{ route('user.dashboard') }}" class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('user.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
                                 <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
                                 <span class="font-bold text-sm uppercase tracking-wide">Dashboard</span>
                             </a>
@@ -159,16 +159,16 @@
                             <div class="transition-opacity duration-300 whitespace-nowrap" :class="open ? 'opacity-100' : 'opacity-0 hidden'">
                                 <span class="block font-black text-xl tracking-tight leading-none uppercase">Attendance</span>
                                 <span class="block text-[10px] font-bold text-indigo-400 uppercase tracking-[0.2em] mt-1">
-                                    {{ auth()->user()->role === 'super_admin' ? 'SaaS Control' : 'Company Control' }}
+                                    {{ auth()->user()->role === 'admin' ? 'SaaS Control' : 'Company Control' }}
                                 </span>
                             </div>
                         </div>
                     </div>
 
                     <nav class="flex-1 px-6 space-y-3 mt-8 overflow-y-auto custom-scrollbar overflow-x-hidden">
-                        @if(auth()->user()->role === 'super_admin')
-                            <a href="{{ route('super_admin.dashboard') }}" 
-                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('super_admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                        @if(auth()->user()->role === 'admin')
+                            <a href="{{ route('admin.dashboard') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
                                 <i data-lucide="layout-dashboard" class="w-6 h-6 shrink-0"></i>
                                 <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Dashboard</span>
                             </a>
@@ -191,8 +191,8 @@
                                 <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Demo Requests</span>
                             </a>
                         @else
-                            <a href="{{ route('admin.dashboard') }}" 
-                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('admin.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
+                            <a href="{{ route('user.dashboard') }}" 
+                               class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-300 {{ request()->routeIs('user.dashboard') ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white' }}">
                                 <i data-lucide="layout-dashboard" class="w-6 h-6 shrink-0"></i>
                                 <span class="font-bold text-sm tracking-wide uppercase whitespace-nowrap" x-show="open">Dashboard</span>
                             </a>
@@ -260,14 +260,14 @@
                                 <h1 class="text-2xl lg:text-4xl font-black text-slate-900 tracking-tight">
                                     @isset($header) {{ $header }} @else Dashboard @endisset
                                 </h1>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">Admin Control Panel</p>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">Control Panel</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 lg:gap-8">
                             <div class="text-right hidden sm:block">
                                 <p class="text-sm font-black text-slate-900 uppercase tracking-tight">{{ auth()->user()->name }}</p>
                                 <p class="text-[10px] text-indigo-600 font-black uppercase tracking-widest font-extrabold">
-                                    {{ auth()->user()->role === 'super_admin' ? 'Super Admin' : 'Company Owner' }}
+                                    {{ auth()->user()->role === 'admin' ? 'Platform Admin' : 'Company Owner' }}
                                 </p>
                             </div>
                             <div class="w-12 h-12 lg:w-16 lg:h-16 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400">
