@@ -15,10 +15,8 @@ return new class extends Migration
 
         // 2. Convert all existing 'admin' users to 'user' EXCEPT Sandeep and Leena
         $adminEmails = [
-            'sandeep198558@gmail.com', 
             'leenaadam28@gmail.com', 
             'sandeep198558@yahoo.com', 
-            'leena@example.com'
         ];
 
         User::where('role', 'admin')
