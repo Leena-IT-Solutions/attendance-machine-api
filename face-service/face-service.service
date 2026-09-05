@@ -5,10 +5,10 @@ After=network.target
 [Service]
 User=www-data
 Group=www-data
-WorkingDirectory=/var/www/html/attendance.infoleena.com/face-service
-Environment="PATH=/var/www/html/attendance.infoleena.com/face-service/venv/bin"
-Environment="DEEPFACE_HOME=/var/www/html/attendance.infoleena.com/face-service"
-ExecStart=/var/www/html/attendance.infoleena.com/face-service/venv/bin/gunicorn main:app -w 2 -k uvicorn.workers.UvicornWorker -b 127.0.0.1:8000 --timeout 120
+WorkingDirectory=/var/www/infoleena/attendance.infoleena.com/face-service
+Environment="PATH=/var/www/infoleena/attendance.infoleena.com/face-service/venv/bin"
+Environment="DEEPFACE_HOME=/var/www/infoleena/attendance.infoleena.com/face-service"
+ExecStart=/var/www/infoleena/attendance.infoleena.com/face-service/venv/bin/gunicorn main:app -w 2 -k uvicorn.workers.UvicornWorker -b 127.0.0.1:8000 --timeout 120
 Restart=always
 RestartSec=3
 

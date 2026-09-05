@@ -11,7 +11,15 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-SERVICE_DIR="/var/www/html/attendance.infoleena.com/face-service"
+# Detect current directory or fallback to configured path
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SERVICE_DIR="${SERVICE_DIR:-/var/www/infoleena/attendance.infoleena.com/face-service}"
+
+if [ -d "$SCRIPT_DIR" ] && [ -f "$SCRIPT_DIR/main.py" ]; then
+    SERVICE_DIR="$SCRIPT_DIR"
+fi
+
+echo "[*] Target Service Directory: $SERVICE_DIR"
 cd "$SERVICE_DIR" || { echo "[-] Failed to cd into $SERVICE_DIR"; exit 1; }
 
 # 2. Install required system packages
@@ -53,6 +61,12 @@ chmod -R 775 "$SERVICE_DIR"
 
 # 7. Configure and start systemd service
 echo "[+] Step 6: Configuring systemd service..."
+# Dynamically ensure working directory matches in the systemd service file
+sed -i "s|WorkingDirectory=.*|WorkingDirectory=$SERVICE_DIR|g" "$SERVICE_DIR/face-service.service"
+sed -i "s|Environment=\"PATH=.*|Environment=\"PATH=$SERVICE_DIR/venv/bin\"|g" "$SERVICE_DIR/face-service.service"
+sed -i "s|Environment=\"DEEPFACE_HOME=.*|Environment=\"DEEPFACE_HOME=$SERVICE_DIR\"|g" "$SERVICE_DIR/face-service.service"
+sed -i "s|ExecStart=.*|ExecStart=$SERVICE_DIR/venv/bin/gunicorn main:app -w 2 -k uvicorn.workers.UvicornWorker -b 127.0.0.1:8000 --timeout 120|g" "$SERVICE_DIR/face-service.service"
+
 cp "$SERVICE_DIR/face-service.service" /etc/systemd/system/face-service.service
 systemctl daemon-reload
 systemctl enable face-service
