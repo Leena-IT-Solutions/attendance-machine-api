@@ -50,6 +50,27 @@ rm -rf "$SERVICE_DIR/venv"
 echo "[+] Step 4: Installing dependencies from requirements.txt into venv..."
 /usr/local/bin/uv pip install --link-mode=copy -r "$SERVICE_DIR/requirements.txt" --python "$SERVICE_DIR/venv/bin/python"
 
+# Ensure haarcascade XML is present in cv2 data directory
+echo "[+] Verifying OpenCV cascade models..."
+"$SERVICE_DIR/venv/bin/python" -c "
+import cv2, os, urllib.request
+data_dir = getattr(cv2, 'data', None)
+target = None
+if data_dir and hasattr(data_dir, 'haarcascades'):
+    target = os.path.join(data_dir.haarcascades, 'haarcascade_frontalface_default.xml')
+else:
+    target = os.path.join(os.path.dirname(cv2.__file__), 'data', 'haarcascade_frontalface_default.xml')
+
+if target and not os.path.exists(target):
+    os.makedirs(os.path.dirname(target), exist_ok=True)
+    print(f'[+] Downloading missing haarcascade to {target}...')
+    url = 'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml'
+    urllib.request.urlretrieve(url, target)
+    print('[✓] Haarcascade downloaded successfully.')
+else:
+    print('[✓] Haarcascade verified at:', target)
+"
+
 # 6. Pre-warm and download ArcFace model weights
 echo "[+] Step 5: Pre-downloading and validating ArcFace weights..."
 export DEEPFACE_HOME="$SERVICE_DIR"
