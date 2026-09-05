@@ -1,3 +1,7 @@
+import os
+# Ensure DeepFace weights directory is within the service directory to prevent permission issues with system users
+os.environ.setdefault("DEEPFACE_HOME", os.path.dirname(os.path.abspath(__file__)))
+
 import json
 import logging
 from typing import List
