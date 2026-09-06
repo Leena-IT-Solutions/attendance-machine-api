@@ -25,7 +25,7 @@ class UserManagementTest extends TestCase
             ->actingAs($user)
             ->get(route('users.index'));
 
-        $response->assertRedirect(route('login'));
+        $response->assertRedirect(route('user.dashboard'));
     }
 
     public function test_admin_user_can_access_users_index_with_employee_counts(): void

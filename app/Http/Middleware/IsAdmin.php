@@ -16,18 +16,14 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role === 'admin') {
-            return $next($request);
-        }
-
         if (Auth::check()) {
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+            if (Auth::user()->isAdmin()) {
+                return $next($request);
+            }
+
+            return redirect()->route('user.dashboard')->with('error', 'Only administrators can access the admin panel.');
         }
 
-        return redirect()->route('login')->withErrors([
-            'email' => 'Unauthorised Access. Only administrators can access this portal.',
-        ]);
+        return redirect()->route('login');
     }
 }

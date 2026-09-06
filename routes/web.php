@@ -157,12 +157,10 @@ Route::get('/download-apk', function () {
 
 Route::get('/dashboard', function () {
     if (Auth::check()) {
-        if (Auth::user()->role === 'admin') {
+        if (Auth::user()->isAdmin()) {
             return redirect()->route('admin.dashboard');
         }
-        if (Auth::user()->role === 'user') {
-            return redirect()->route('user.dashboard');
-        }
+        return redirect()->route('user.dashboard');
     }
     return redirect()->route('login');
 })->middleware(['auth'])->name('dashboard');

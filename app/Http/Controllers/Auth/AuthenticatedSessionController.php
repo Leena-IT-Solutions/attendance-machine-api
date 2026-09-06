@@ -26,14 +26,13 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'user') {
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+        $user = Auth::user();
+        $role = strtolower(trim($user->role ?? ''));
 
-            return redirect()->route('login')->withErrors([
-                'email' => 'Unauthorised Access.',
-            ]);
+        if (empty($role) || in_array($role, ['client', 'company'])) {
+            $user->update(['role' => 'user']);
+        } elseif ($role === 'super_admin') {
+            $user->update(['role' => 'admin']);
         }
 
         $request->session()->regenerate();

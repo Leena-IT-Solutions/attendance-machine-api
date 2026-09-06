@@ -16,18 +16,15 @@ class IsUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role === 'user') {
-            return $next($request);
-        }
-
         if (Auth::check()) {
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+            // Allow user and also allow admin accounts to view user area without being logged out
+            if (Auth::user()->isUser() || Auth::user()->isAdmin()) {
+                return $next($request);
+            }
+
+            return redirect()->route('dashboard')->with('error', 'Unauthorized access.');
         }
 
-        return redirect()->route('login')->withErrors([
-            'email' => 'Unauthorised Access. Only client accounts can access this portal.',
-        ]);
+        return redirect()->route('login');
     }
 }

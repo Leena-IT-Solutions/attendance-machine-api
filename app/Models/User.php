@@ -38,6 +38,16 @@ class User extends Authenticatable
         return $this->hasMany(Shift::class);
     }
 
+    public function isAdmin(): bool
+    {
+        return in_array(strtolower(trim($this->role ?? '')), ['admin', 'super_admin']);
+    }
+
+    public function isUser(): bool
+    {
+        return strtolower(trim($this->role ?? '')) === 'user';
+    }
+
     protected $attributes = [
         'max_employees' => 2,
         'subscription_tier' => 'free',

@@ -31,7 +31,7 @@
 
         <!-- Remember Me -->
         <div class="form-check">
-            <input id="remember_me" type="checkbox" name="remember">
+            <input id="remember_me" type="checkbox" name="remember" checked>
             <label for="remember_me">Remember me</label>
         </div>
 
